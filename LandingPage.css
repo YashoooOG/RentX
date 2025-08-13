@@ -14,6 +14,7 @@
     height: 30px;
     margin-right: 5px;
     /* margin-left: 1vw; */
+    
 }   
 
 .input-group {
@@ -69,11 +70,26 @@
     color: black !important;
 }
 
+.theme {
+    margin: auto 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #000000;
+    z-index: 1001;
+}
+
+#dark{
+    display: none;
+}
+
+
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex-direction: column;
     background-color: #f8f8f8;
@@ -98,4 +114,86 @@ main {
 
 .btn-rent {
     border: 2px solid transparent !important;
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .navbar-custom-bg {
+    background-color: #2d2d2d !important;
+}
+
+.dark-mode .navbar-brand span {
+    color: #ffffff !important;
+}
+
+.dark-mode .btn-link {
+    color: #ffffff !important;
+    border: 1px solid transparent !important;
+}
+
+.dark-mode .btn-link:hover {
+    background-color: #7474747a !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+}
+
+.dark-mode .btn-dark {
+    background-color: #f0f0f0 !important;
+    color: #1a1a1a !important;
+    border: 1px solid #cfcfcf !important;
+}
+
+.dark-mode .btn-dark:hover {
+    background-color: #7474747a  !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+}
+
+.dark-mode .btn-outline-dark {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+.dark-mode .btn-outline-dark:hover {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    border: 2px solid #ffffff !important;
+}
+
+.dark-mode .text-muted {
+    color: #b0b0b0 !important;
+}
+
+.dark-mode .theme {
+    color: #ffffff !important;
+}
+
+.dark-mode main {
+    background-color: #1a1a1a !important;
+}
+
+.dark-mode .maincontainer {
+    color: #ffffff !important;
+}
+
+.dark-mode .display-2 {
+    color: #ffffff !important;
+}
+
+.dark-mode .lead {
+    color: #b0b0b0 !important;
+}
+
+.dark-mode .fw-bold {
+    color: #ffffff !important;
+}
+
+.dark-mode .logo-svg {
+    filter: invert(1);
 }
