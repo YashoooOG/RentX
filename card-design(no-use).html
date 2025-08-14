@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div Design</title>
+
+    <!-- this is only a design not used in actual project just to make a card and design it -->
+    <style>
+        a {
+            text-decoration: none;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .cardholder {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 16px;
+            width: 400px;
+            height: 350px;
+            background: white;
+            transition: transform 0.2s ease;
+        }
+
+        .cardholder:hover {
+            transform: translateY(-0.5px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .imageholder {
+            margin: 2%;
+            width: 96%;
+            height: 250px;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+            }
+
+        }
+
+        .cardinfo {
+            margin: 2%;
+            padding: 0 2%;
+            h3 {
+                margin: 8px 0 4px 0;
+                font-size: 20px;
+                color: #000000;
+                font-weight: 1600;
+            }
+
+            h4 {
+                margin: 4px 0 8px 0;
+                font-size: 16px;
+                color: #1a1a1a;
+                font-weight: 1000;
+            }
+        }
+
+        .infocard {
+            margin: 0 2%;
+            padding: 0 2%;
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+            p {
+                margin: 4px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="">
+        <div class="cardholder">
+            <div class="imageholder">
+                <img src="images/Screenshot 2024-11-07 165005.png" alt="">
+            </div>
+            <div class="cardinfo">
+                <h3>Cat carpet</h3>
+                <h4>3500 INR</h4>
+            </div>
+            <div class="infocard">
+                <p>Delhi, Delhi</p>
+                <p>Yash</p>
+            </div>
+        </div>
+    </a>
+    <script>
+        
+    </script>
+</body>
+
+</html>
