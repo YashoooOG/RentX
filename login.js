@@ -6,12 +6,19 @@
         const registerButton = document.getElementById('registerButton');
         const container = document.getElementById('container');
 
+        // Function to clear all input fields
+        const clearInputFields = () => {
+            const inputs = document.querySelectorAll('.form-container input');
+            inputs.forEach(input => input.value = '');
+        };
+
         // Add a 'click' event listener to the "Register" button in the overlay
         if (signUpButton) {
             signUpButton.addEventListener('click', () => {
                 // When clicked, add the 'right-panel-active' class to the container
                 // This triggers the CSS animations to slide the panels
                 container.classList.add("right-panel-active");
+                clearInputFields();
             });
         }
 
@@ -21,6 +28,7 @@
                 // When clicked, remove the 'right-panel-active' class
                 // This makes the panels slide back to their original position
                 container.classList.remove("right-panel-active");
+                clearInputFields();
             });
         }
         
@@ -32,6 +40,7 @@
                 
                 // Switch back to the login panel
                 container.classList.remove('right-panel-active');
+                clearInputFields();
             });
         }
 
@@ -43,12 +52,14 @@
         if (mobileSwitchToRegister) {
             mobileSwitchToRegister.addEventListener('click', () => {
                 container.classList.add('mobile-register-active');
+                clearInputFields();
             });
         }
 
         if (mobileSwitchToLogin) {
             mobileSwitchToLogin.addEventListener('click', () => {
                 container.classList.remove('mobile-register-active');
+                clearInputFields();
             });
         }
 
