@@ -1,55 +1,85 @@
-// --- Overlay Animation ---
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+        // --- FORM SLIDING ANIMATION (for Desktop) ---
+        
+        // Get the buttons and the main container from the HTML
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const registerButton = document.getElementById('registerButton');
+        const container = document.getElementById('container');
 
-if (signUpButton) {
-    signUpButton.addEventListener('click', () => {
-        container.classList.add("right-panel-active");
-    });
-}
+        // Add a 'click' event listener to the "Register" button in the overlay
+        if (signUpButton) {
+            signUpButton.addEventListener('click', () => {
+                // When clicked, add the 'right-panel-active' class to the container
+                // This triggers the CSS animations to slide the panels
+                container.classList.add("right-panel-active");
+            });
+        }
 
-if (signInButton) {
-    signInButton.addEventListener('click', () => {
-        container.classList.remove("right-panel-active");
-    });
-}
+        // Add a 'click' event listener to the "Login" button in the overlay
+        if (signInButton) {
+            signInButton.addEventListener('click', () => {
+                // When clicked, remove the 'right-panel-active' class
+                // This makes the panels slide back to their original position
+                container.classList.remove("right-panel-active");
+            });
+        }
+        
+        // Add a 'click' event listener to the main "Register" button
+        if (registerButton) {
+            registerButton.addEventListener('click', (event) => {
+                // Prevent the form from submitting and reloading the page
+                event.preventDefault();
+                
+                // Switch back to the login panel
+                container.classList.remove('right-panel-active');
+            });
+        }
 
 
-// --- Dark Mode Toggle ---
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+        // --- FORM SWITCHING (for Mobile) ---
+        const mobileSwitchToRegister = document.getElementById('mobileSwitchToRegister');
+        const mobileSwitchToLogin = document.getElementById('mobileSwitchToLogin');
 
-// Function to apply the theme and set the toggle state
-const applyTheme = (theme) => {
-    body.classList.remove('dark-mode', 'light-mode');
+        if (mobileSwitchToRegister) {
+            mobileSwitchToRegister.addEventListener('click', () => {
+                container.classList.add('mobile-register-active');
+            });
+        }
 
-    if (theme === 'dark') {
-        body.classList.add('dark-mode');
-        if(themeToggle) themeToggle.checked = true; // "On" for dark mode
-    } else {
-        body.classList.add('light-mode');
-        if(themeToggle) themeToggle.checked = false; // "Off" for light mode
-    }
-};
+        if (mobileSwitchToLogin) {
+            mobileSwitchToLogin.addEventListener('click', () => {
+                container.classList.remove('mobile-register-active');
+            });
+        }
 
-// Check for saved theme in localStorage or system preference
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-if (savedTheme) {
-    applyTheme(savedTheme);
-} else {
-    // If no theme is saved, use system preference
-    applyTheme(prefersDark ? 'dark' : 'light'); 
-}
+        // --- DARK & LIGHT THEME TOGGLE ---
 
-// Event listener for the toggle switch
-if (themeToggle) {
-    themeToggle.addEventListener('change', () => {
-        // If the toggle is checked (on), set theme to dark. Otherwise, light.
-        const newTheme = themeToggle.checked ? 'dark' : 'light';
-        applyTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-}
+        // Get the theme toggle icons from the HTML
+        const lightIcon = document.getElementById('light-icon');
+        const darkIcon = document.getElementById('dark-icon');
+        const body = document.body; // Get the body element
+
+        // Add a 'click' event listener to the sun (light mode) icon
+        if (lightIcon) {
+            lightIcon.addEventListener('click', () => {
+                // 1. Add the 'dark-mode' class to the body
+                body.classList.add('dark-mode');
+                // 2. Hide the sun icon
+                lightIcon.style.display = 'none';
+                // 3. Show the moon icon
+                darkIcon.style.display = 'block';
+            });
+        }
+
+        // Add a 'click' event listener to the moon (dark mode) icon
+        if (darkIcon) {
+            darkIcon.addEventListener('click', () => {
+                // 1. Remove the 'dark-mode' class from the body
+                body.classList.remove('dark-mode');
+                // 2. Show the sun icon
+                lightIcon.style.display = 'block';
+                // 3. Hide the moon icon
+                darkIcon.style.display = 'none';
+            });
+        }
