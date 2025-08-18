@@ -20,13 +20,18 @@
 
     <!-- Link to your external CSS file -->
     <link rel="stylesheet" href="login.css">
+    <script src="auth.js"></script>
 </head>
 
 <body>
+    <script>
+        // If already logged in, redirect to main page
+        redirectIfLoggedIn();
+    </script>
     <header>
         <nav class="navbar navbar-light navbar-custom-bg px-3 py-3">
             <!-- Logo + Name -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="LandingPage.html">
                 <img src="images/D1Qy2q01-cropped.svg" alt="Logo" class="logo-svg">
                 <span>RentX</span>
             </a>
@@ -74,7 +79,7 @@
                 <input type="text" placeholder="Username" />
                 <input type="password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
-                <button>Login</button>
+                <button type="submit" id="loginButton">Login</button>
                 <!-- This button is only for mobile to switch to the registration form -->
                 <button type="button" class="mobile-switch" id="mobileSwitchToRegister">Don't have an account? Register</button>
             </form>

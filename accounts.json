@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "demo",
+      "email": "demo@rentx.com",
+      "password": "demo123",
+      "fullName": "Demo User",
+      "phone": "+91 9876543210",
+      "location": "Mumbai, India",
+      "joinDate": "2025-01-15",
+      "avatar": "images/default-avatar.png",
+      "rentHistory": [
+        {
+          "itemId": 1001,
+          "itemName": "Honda Activa 6G (Scooter)",
+          "rentDate": "2025-08-01",
+          "returnDate": "2025-08-03",
+          "totalAmount": 1950,
+          "status": "Completed"
+        },
+        {
+          "itemId": 1009,
+          "itemName": "Epson 4K Projector (Home Cinema)",
+          "rentDate": "2025-07-20",
+          "returnDate": "2025-07-22",
+          "totalAmount": 3600,
+          "status": "Completed"
+        }
+      ],
+      "wishlist": [1004, 1013, 1025, 1033],
+      "profileCompletion": 85
+    },
+    {
+      "id": 2,
+      "username": "testuser",
+      "email": "test@example.com",
+      "password": "test123",
+      "fullName": "Test User",
+      "phone": "+91 8765432109",
+      "location": "Delhi, India",
+      "joinDate": "2025-02-10",
+      "avatar": "images/default-avatar.png",
+      "rentHistory": [],
+      "wishlist": [1002, 1018],
+      "profileCompletion": 60
+    }
+  ]
+}

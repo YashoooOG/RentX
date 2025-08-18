@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - RentX</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="mainpage.css">
+    <link rel="stylesheet" href="profile.css">
+    <script src="auth.js"></script>
+</head>
+
+<body>
+    <script>
+        // Protect this page - only logged in users can access
+        protectPage();
+    </script>
+    <header class="main-header">
+        <nav class="navbar navbar-light navbar-custom-bg px-3 py-3">
+            <!-- Logo + Name -->
+            <a class="navbar-brand d-flex align-items-center" href="LandingPage.html" style="min-width: fit-content;">
+                <img src="images/D1Qy2q01-cropped.svg" alt="Logo" class="logo-svg">
+                <span class="brand-text">RentX</span>
+            </a>
+
+            <!-- Spacer -->
+            <div class="flex-grow-1"></div>
+            
+            <!-- Right side actions -->
+            <div class="navbar-actions d-flex align-items-center">
+                <!-- Browse button -->
+                <button class="btn btn-outline-dark me-2" onclick="window.location.href='mainpage.html'" title="Browse Items">
+                    <i class="bi bi-grid"></i> Browse
+                </button>
+                
+                <!-- Wishlist button -->
+                <button class="btn btn-outline-dark me-2" onclick="window.location.href='wishlist.html'" title="Wishlist">
+                    <i class="bi bi-heart"></i>
+                </button>
+                
+                <!-- Logout button -->
+                <button class="btn btn-dark" onclick="logout()" title="Logout">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container mt-4">
+        <!-- Profile Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="profile-header card shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <div class="profile-avatar">
+                                    <i class="fas fa-user-circle" style="font-size: 5rem; color: #6c757d;"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h2 class="mb-1" id="userFullName">Loading...</h2>
+                                <p class="text-muted mb-1" id="userEmail">Loading...</p>
+                                <p class="text-muted mb-2">
+                                    <i class="bi bi-geo-alt"></i> <span id="userLocation">Loading...</span>
+                                </p>
+                                <div class="d-flex align-items-center">
+                                    <span class="me-2">Profile Completion:</span>
+                                    <div class="progress flex-grow-1 me-2" style="height: 8px;">
+                                        <div class="progress-bar bg-success" role="progressbar" 
+                                             style="width: 0%" id="profileProgress"></div>
+                                    </div>
+                                    <span class="text-success fw-bold" id="profilePercentage">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Navigation Tabs -->
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" 
+                                type="button" role="tab">
+                            <i class="bi bi-person"></i> Overview
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" 
+                                type="button" role="tab">
+                            <i class="bi bi-clock-history"></i> Rental History
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist-tab-content" 
+                                type="button" role="tab">
+                            <i class="bi bi-heart"></i> Wishlist
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="profileTabContent">
+            <!-- Overview Tab -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0">Personal Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"><strong>Full Name:</strong></div>
+                                    <div class="col-sm-8" id="profileFullName">Loading...</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"><strong>Username:</strong></div>
+                                    <div class="col-sm-8" id="profileUsername">Loading...</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"><strong>Email:</strong></div>
+                                    <div class="col-sm-8" id="profileEmail">Loading...</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"><strong>Phone:</strong></div>
+                                    <div class="col-sm-8" id="profilePhone">Loading...</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-4"><strong>Location:</strong></div>
+                                    <div class="col-sm-8" id="profileLocation">Loading...</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4"><strong>Member Since:</strong></div>
+                                    <div class="col-sm-8" id="profileJoinDate">Loading...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0">Quick Stats</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <div class="stat-item">
+                                            <h3 class="text-primary mb-1" id="totalRentals">0</h3>
+                                            <small class="text-muted">Total Rentals</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stat-item">
+                                            <h3 class="text-danger mb-1" id="wishlistCount">0</h3>
+                                            <small class="text-muted">Wishlist Items</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="stat-item">
+                                            <h3 class="text-success mb-1" id="totalSpent">₹0</h3>
+                                            <small class="text-muted">Total Spent</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div class="tab-pane fade" id="history" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0">Rental History</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="historyContent">
+                            <!-- History will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wishlist Tab -->
+            <div class="tab-pane fade" id="wishlist-tab-content" role="tabpanel">
+                <div class="card shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">My Wishlist</h5>
+                        <button class="btn btn-outline-primary btn-sm" onclick="window.location.href='wishlist.html'">
+                            View Full Wishlist
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="wishlistContent">
+                            <!-- Wishlist preview will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="profile.js"></script>
+</body>
+
+</html>

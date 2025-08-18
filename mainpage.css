@@ -55,6 +55,19 @@ body {
     font-size: 2rem !important;
 }
 
+/* Auth state overrides */
+.auth-hidden {
+    display: none !important;
+}
+
+.auth-visible {
+    display: inline-block !important;
+}
+
+.auth-flex {
+    display: flex !important;
+}
+
 .btn-dark:hover {
     background-color: white !important;
     color: black !important;

@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="auth.js"></script>
 </head>
 
 <body>
     <header class="main-header">
         <nav class="navbar navbar-light navbar-custom-bg px-3 py-3">
             <!-- Logo + Name -->
-            <a class="navbar-brand d-flex align-items-center" href="#" style="min-width: fit-content;">
+            <a class="navbar-brand d-flex align-items-center" href="LandingPage.html" style="min-width: fit-content;">
                 <img src="images/D1Qy2q01-cropped.svg" alt="Logo" class="logo-svg">
                 <span class="brand-text">RentX</span>
             </a>
@@ -33,16 +34,32 @@
             
             <!-- Right side actions -->
             <div class="navbar-actions d-flex align-items-center">
-                <!-- Buttons for larger screens -->
-                <div class="d-none d-lg-flex">
-                    <button class="btn btn-link text-decoration-none text-black me-2">Login</button>
-                    <button class="btn btn-dark btn-round text-nowrap">Create Account</button>
+                <!-- Wishlist button -->
+                <button class="btn btn-outline-dark me-2" onclick="window.location.href='wishlist.html'" title="Wishlist">
+                    <i class="bi bi-heart"></i>
+                </button>
+                
+                <!-- Profile button (shown when logged in) -->
+                <button class="btn btn-outline-dark me-2" onclick="window.location.href='profile.html'" 
+                        title="My Profile" id="profileBtn" style="display: none;">
+                    <i class="bi bi-person-circle"></i> Profile
+                </button>
+                
+                <!-- Login/Signup Buttons for larger screens (shown when NOT logged in) -->
+                <div class="d-none d-lg-flex" id="authButtons">
+                    <button class="btn btn-link text-decoration-none text-black me-2" onclick="window.location.href='login.html'">Login</button>
+                    <button class="btn btn-dark btn-round text-nowrap" onclick="window.location.href='login.html'">Create Account</button>
                 </div>
 
-                <!-- Button for smaller screens -->
-                <div class="d-lg-none">
-                    <button class="btn btn-dark btn-round">Sign In</button>
+                <!-- Login/Signup Button for smaller screens (shown when NOT logged in) -->
+                <div class="d-lg-none" id="authButtonMobile">
+                    <button class="btn btn-dark btn-round" onclick="window.location.href='login.html'">Sign In</button>
                 </div>
+                
+                <!-- Logout button (shown when logged in) -->
+                <button class="btn btn-danger btn-round" onclick="logout()" id="logoutBtn" style="display: none;">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
                 
                 <!-- <div class="theme" id="theme">
                     <i class="fa-regular fa-lightbulb" id="light"></i>

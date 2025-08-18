@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="auth.js"></script>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-light navbar-custom-bg px-3 py-3">
             <!-- Logo + Name -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="LandingPage.html">
                 <img src="images/D1Qy2q01-cropped.svg" alt="Logo" class="logo-svg">
                 <span>RentX</span>
             </a>
@@ -28,16 +29,28 @@
 
             <!-- Login and Signup Buttons - Right aligned -->
             <div class="d-flex align-items-center">
-                <!-- Buttons for larger screens -->
-                <div class="d-none d-md-flex">
-                    <button class="btn btn-link text-decoration-none text-black me-2">Login</button>
-                    <button class="btn btn-dark btn-round text-nowrap">Create Account</button>
+                <!-- Profile button (shown when logged in) -->
+                <button class="btn btn-outline-dark me-2" onclick="window.location.href='profile.html'" 
+                        title="My Profile" id="profileBtn" style="display: none;">
+                    <i class="bi bi-person-circle"></i> Profile
+                </button>
+                
+                <!-- Buttons for larger screens (shown when NOT logged in) -->
+                <div class="d-none d-md-flex" id="authButtons">
+                    <button class="btn btn-link text-decoration-none text-black me-2" onclick="window.location.href='login.html'">Login</button>
+                    <button class="btn btn-dark btn-round text-nowrap" onclick="window.location.href='login.html'">Create Account</button>
                 </div>
 
-                <!-- Button for smaller screens -->
-                <div class="d-md-none">
-                    <button class="btn btn-dark btn-round">Sign In</button>
+                <!-- Button for smaller screens (shown when NOT logged in) -->
+                <div class="d-md-none" id="authButtonMobile">
+                    <button class="btn btn-dark btn-round" onclick="window.location.href='login.html'">Sign In</button>
                 </div>
+                
+                <!-- Logout button (shown when logged in) -->
+                <button class="btn btn-danger btn-round me-2" onclick="logout()" id="logoutBtn" style="display: none;">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
+                
                 <div class="theme" id="theme">
                     <i class="fa-regular fa-lightbulb" id="light"></i>
                     <i class="fa-regular fa-moon" id="dark"></i>
@@ -58,7 +71,7 @@
                 <div class="d-flex justify-content-center gap-3 flex-wrap mb-5">
                     <button class="btn btn-dark btn-rent btn-lg px-4 py-2" id="nextBtn" style="border-radius: 8px;">Start
                         Renting</button>
-                    <button class="btn btn-outline-dark btn-lg px-4 py-2" style="border-radius: 8px;">List Your
+                    <button class="btn btn-outline-dark btn-lg px-4 py-2" style="border-radius: 8px;" onclick="window.location.href='new.html'">List Your
                         Item</button>
                 </div>
                 <div class="row text-center">
