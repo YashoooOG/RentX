@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     /* background-color: #f8f8f8; */
@@ -11,8 +11,8 @@ body {
 
 .btn-round {
     border-radius: 5px;
-        border: 2px solid #000;
-    }
+    border: 2px solid #000;
+}
 
 
 
@@ -20,8 +20,8 @@ body {
     height: 30px;
     margin-right: 5px;
     /* margin-left: 1vw; */
-    
-}   
+
+}
 
 .input-group {
     border: 2px solid #000000;
@@ -38,7 +38,7 @@ body {
 }
 
 .white-icon {
-  color: white;
+    color: white;
 }
 
 .input-group .btn {
@@ -75,7 +75,8 @@ body {
 }
 
 .navbar-custom-bg {
-    background-color: #f8f9fa !important; /* slightly offwhite */
+    background-color: #f8f9fa !important;
+    /* slightly offwhite */
 }
 
 /* Navbar responsive layout fixes */
@@ -124,11 +125,13 @@ body {
     .brand-text {
         display: none;
     }
+
     .search-form {
         min-width: 120px;
         max-width: 230px;
         margin: 0 8px;
     }
+
     .navbar-actions {
         gap: 4px;
     }
@@ -154,7 +157,7 @@ body {
 } */
 
 .main-header {
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.07);
     z-index: 10;
 }
 
@@ -201,6 +204,7 @@ body {
         padding: 24px 8px;
     }
 }
+
 @media (max-width: 600px) {
     #main-content {
         max-width: 100%;
@@ -217,10 +221,11 @@ body {
     padding: 8px 24px 24px 24px;
     border-bottom: 1px solid #ececec;
     margin-bottom: 24px;
-    flex-wrap: nowrap; /* Prevent wrapping */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
 }
 
-.allcat{
+.allcat {
     color: black;
     text-decoration: none;
 }
@@ -230,14 +235,17 @@ body {
     font-weight: 600;
     color: #111;
     font-size: 1.1rem;
-    flex-shrink: 0; /* Don't allow shrinking */
+    flex-shrink: 0;
+    /* Don't allow shrinking */
 }
 
 .suggested-category {
     display: flex;
     gap: 24px;
-    flex-wrap: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Hide overflow when too many items */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+    overflow: hidden;
+    /* Hide overflow when too many items */
 }
 
 .desktop-categories {
@@ -258,7 +266,8 @@ body {
     transition: color 0.2s;
     padding: 8px 12px;
     border-radius: 6px;
-    white-space: nowrap; /* Prevent text wrapping */
+    white-space: nowrap;
+    /* Prevent text wrapping */
 }
 
 .category-item a:hover {
@@ -266,22 +275,32 @@ body {
     background-color: #f5f5f5;
 }
 
-.category-item:first-child a {
+
+.active-category {
+    font-weight: 600 !important;
+    color: black !important;
+    background-color: #ddd !important;
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+
+/* .category-item:first-child a {
     color: #111;
     font-weight: 600;
     background-color: #f0f0f0;
-}
+} */
 
 /* Media query to switch to dropdown when space is limited */
 @media (max-width: 768px) {
     .category-bar {
         padding: 16px 16px 24px 16px;
     }
-    
+
     .desktop-categories {
         display: none !important;
     }
-    
+
     .mobile-dropdown {
         display: block !important;
     }
@@ -323,11 +342,81 @@ body {
 /* Additional breakpoint for medium screens */
 @media (max-width: 950px) and (min-width: 769px) {
     .suggested-category {
-        gap: 16px; /* Reduce gap to fit more items */
+        gap: 16px;
+        /* Reduce gap to fit more items */
     }
-    
+
     .category-item a {
-        padding: 6px 8px; /* Reduce padding */
-        font-size: 0.9rem; /* Slightly smaller font */
+        padding: 6px 8px;
+        /* Reduce padding */
+        font-size: 0.9rem;
+        /* Slightly smaller font */
     }
+}
+
+/*
+card css dynamicly added
+*/
+.cardicondisplay {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.productcard-holder {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin: 12px;
+    width: 300px;
+    height: 360px;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.productcard-holder:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.productcard-imageholder {
+    margin: 2%;
+    width: 96%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+.productcard-imageholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.productcard-info {
+    margin: 8px;
+}
+
+.productcard-info h3 {
+    margin: 6px 0 4px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111;
+}
+
+.productcard-info h4 {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.productcard-infobar {
+    margin: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #666;
 }
