@@ -1,0 +1,806 @@
+{
+  "status": "success",
+  "timestamp": "2025-08-14T14:30:00Z",
+  "data": [
+    {
+      "id": 1001,
+      "name": "Honda Activa 6G (Scooter)",
+      "images": [
+        "https://example.com/images/vehicle1a.jpg",
+        "https://example.com/images/vehicle1b.jpg"
+      ],
+      "price": 650,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "RideOn Rentals",
+      "location": "Mumbai, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 2000,
+      "min_rental_days": 1,
+      "max_rental_days": 14,
+      "description": "Reliable city scooter with helmet and phone mount included.",
+      "posted_at": "2025-08-03T10:00:00Z"
+    },
+    {
+      "id": 1002,
+      "name": "Royal Enfield Classic 350",
+      "images": [
+        "https://example.com/images/vehicle2a.jpg",
+        "https://example.com/images/vehicle2b.jpg"
+      ],
+      "price": 1200,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "Bullet Club Rentals",
+      "location": "Delhi, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 4000,
+      "min_rental_days": 1,
+      "max_rental_days": 10,
+      "description": "Well-maintained Classic 350 ideal for weekend trips.",
+      "posted_at": "2025-08-04T10:00:00Z"
+    },
+    {
+      "id": 1003,
+      "name": "Maruti Suzuki Swift (Hatchback)",
+      "images": [
+        "https://example.com/images/vehicle3a.jpg",
+        "https://example.com/images/vehicle3b.jpg"
+      ],
+      "price": 2200,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "City Wheels",
+      "location": "Bangalore, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 6000,
+      "min_rental_days": 1,
+      "max_rental_days": 7,
+      "description": "Petrol Swift with unlimited km within city limits.",
+      "posted_at": "2025-08-05T10:00:00Z"
+    },
+    {
+      "id": 1004,
+      "name": "Mahindra Thar 4x4",
+      "images": [
+        "https://example.com/images/vehicle4a.jpg",
+        "https://example.com/images/vehicle4b.jpg"
+      ],
+      "price": 5000,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "Adventure Wheels",
+      "location": "Pune, India",
+      "condition": "Used",
+      "availability": "Booked",
+      "deposit": 12000,
+      "min_rental_days": 2,
+      "max_rental_days": 10,
+      "description": "Diesel Thar 4x4 with hard top; perfect for off-road.",
+      "posted_at": "2025-08-06T10:00:00Z"
+    },
+    {
+      "id": 1005,
+      "name": "Toyota Innova Crysta (7-seater)",
+      "images": [
+        "https://example.com/images/vehicle5a.jpg",
+        "https://example.com/images/vehicle5b.jpg"
+      ],
+      "price": 3800,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "FamilyGo Rentals",
+      "location": "Hyderabad, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 8000,
+      "min_rental_days": 1,
+      "max_rental_days": 12,
+      "description": "Comfortable 7-seater with captain seats, driver optional.",
+      "posted_at": "2025-08-07T10:00:00Z"
+    },
+    {
+      "id": 1006,
+      "name": "KTM Duke 200",
+      "images": [
+        "https://example.com/images/vehicle6a.jpg",
+        "https://example.com/images/vehicle6b.jpg"
+      ],
+      "price": 900,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "SpeedZone Bikes",
+      "location": "Chennai, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 3000,
+      "min_rental_days": 1,
+      "max_rental_days": 7,
+      "description": "Lightweight street bike; two helmets included.",
+      "posted_at": "2025-08-08T10:00:00Z"
+    },
+    {
+      "id": 1007,
+      "name": "Tata Nexon EV",
+      "images": [
+        "https://example.com/images/vehicle7a.jpg",
+        "https://example.com/images/vehicle7b.jpg"
+      ],
+      "price": 3200,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "GreenDrive",
+      "location": "Ahmedabad, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 9000,
+      "min_rental_days": 1,
+      "max_rental_days": 10,
+      "description": "Electric SUV with charging cable and fast-charge card.",
+      "posted_at": "2025-08-09T10:00:00Z"
+    },
+    {
+      "id": 1008,
+      "name": "Bajaj Pulsar 150",
+      "images": [
+        "https://example.com/images/vehicle8a.jpg",
+        "https://example.com/images/vehicle8b.jpg"
+      ],
+      "price": 750,
+      "rate_unit": "per_day",
+      "category": "Vehicle",
+      "seller": "Metro Bikes",
+      "location": "Kolkata, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 2500,
+      "min_rental_days": 1,
+      "max_rental_days": 14,
+      "description": "Fuel-efficient commuter bike, unlimited km package.",
+      "posted_at": "2025-08-01T10:00:00Z"
+    },
+    {
+      "id": 1009,
+      "name": "Epson 4K Projector (Home Cinema)",
+      "images": [
+        "https://example.com/images/electronics1a.jpg",
+        "https://example.com/images/electronics1b.jpg"
+      ],
+      "price": 1800,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "BrightPixel AV",
+      "location": "Mumbai, India",
+      "condition": "Refurbished",
+      "availability": "Available",
+      "deposit": 4000,
+      "min_rental_days": 1,
+      "max_rental_days": 10,
+      "description": "Ultra HD projector with HDMI cable and carry case.",
+      "posted_at": "2025-08-02T10:00:00Z"
+    },
+    {
+      "id": 1010,
+      "name": "DJ PA Speaker 15-inch (Pair)",
+      "images": [
+        "https://example.com/images/electronics2a.jpg",
+        "https://example.com/images/electronics2b.jpg"
+      ],
+      "price": 2200,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "SoundSphere",
+      "location": "Delhi, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 5000,
+      "min_rental_days": 1,
+      "max_rental_days": 7,
+      "description": "2 powered speakers + stands + XLR cables.",
+      "posted_at": "2025-08-03T10:00:00Z"
+    },
+    {
+      "id": 1011,
+      "name": "Dell PowerEdge R740 Rack Server",
+      "images": [
+        "https://example.com/images/electronics3a.jpg",
+        "https://example.com/images/electronics3b.jpg"
+      ],
+      "price": 3500,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "ServerHub Rentals",
+      "location": "Bangalore, India",
+      "condition": "Refurbished",
+      "availability": "Available",
+      "deposit": 15000,
+      "min_rental_days": 1,
+      "max_rental_days": 14,
+      "description": "Dual Xeon server for short-term testing and POCs.",
+      "posted_at": "2025-08-04T10:00:00Z"
+    },
+    {
+      "id": 1012,
+      "name": "Logitech Rally Bar (Conference)",
+      "images": [
+        "https://example.com/images/electronics4a.jpg",
+        "https://example.com/images/electronics4b.jpg"
+      ],
+      "price": 2800,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "MeetGear",
+      "location": "Hyderabad, India",
+      "condition": "Like New",
+      "availability": "Booked",
+      "deposit": 8000,
+      "min_rental_days": 1,
+      "max_rental_days": 10,
+      "description": "All-in-one video bar for Teams/Zoom rooms.",
+      "posted_at": "2025-08-05T10:00:00Z"
+    },
+    {
+      "id": 1013,
+      "name": "Blackmagic ATEM Mini Pro (Switcher)",
+      "images": [
+        "https://example.com/images/electronics5a.jpg",
+        "https://example.com/images/electronics5b.jpg"
+      ],
+      "price": 1500,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "LiveCast Kit",
+      "location": "Pune, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 5000,
+      "min_rental_days": 1,
+      "max_rental_days": 10,
+      "description": "4-input HDMI live switcher for streaming events.",
+      "posted_at": "2025-08-06T10:00:00Z"
+    },
+    {
+      "id": 1014,
+      "name": "GoPro Hero 12 Kit",
+      "images": [
+        "https://example.com/images/electronics6a.jpg",
+        "https://example.com/images/electronics6b.jpg"
+      ],
+      "price": 1200,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "ActionCam Rentals",
+      "location": "Chennai, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 3000,
+      "min_rental_days": 1,
+      "max_rental_days": 7,
+      "description": "Action camera with 2 batteries, head & chest mounts.",
+      "posted_at": "2025-08-07T10:00:00Z"
+    },
+    {
+      "id": 1015,
+      "name": "Ubiquiti UniFi Mesh Kit (3-pack)",
+      "images": [
+        "https://example.com/images/electronics7a.jpg",
+        "https://example.com/images/electronics7b.jpg"
+      ],
+      "price": 900,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "NetWorks",
+      "location": "Ahmedabad, India",
+      "condition": "Refurbished",
+      "availability": "Available",
+      "deposit": 2500,
+      "min_rental_days": 1,
+      "max_rental_days": 14,
+      "description": "Whole-home mesh Wi‑Fi kit, preconfigured.",
+      "posted_at": "2025-08-08T10:00:00Z"
+    },
+    {
+      "id": 1016,
+      "name": "Epson A3 Photo Scanner",
+      "images": [
+        "https://example.com/images/electronics8a.jpg",
+        "https://example.com/images/electronics8b.jpg"
+      ],
+      "price": 700,
+      "rate_unit": "per_day",
+      "category": "Electronics",
+      "seller": "ScanPro",
+      "location": "Kolkata, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 2000,
+      "min_rental_days": 1,
+      "max_rental_days": 10,
+      "description": "High-resolution A3 flatbed scanner for archives.",
+      "posted_at": "2025-08-09T10:00:00Z"
+    },
+    {
+      "id": 1017,
+      "name": "3-Seater Fabric Sofa",
+      "images": [
+        "https://example.com/images/furniture1a.jpg",
+        "https://example.com/images/furniture1b.jpg"
+      ],
+      "price": 900,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "HomeDeco Rentals",
+      "location": "Mumbai, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 3000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Comfortable 3-seater with washable covers.",
+      "posted_at": "2025-08-01T10:00:00Z"
+    },
+    {
+      "id": 1018,
+      "name": "Queen Bed + Mattress",
+      "images": [
+        "https://example.com/images/furniture2a.jpg",
+        "https://example.com/images/furniture2b.jpg"
+      ],
+      "price": 1200,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "Rent-A-Room",
+      "location": "Bangalore, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 4000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Queen size bed with 6-inch foam mattress.",
+      "posted_at": "2025-08-02T10:00:00Z"
+    },
+    {
+      "id": 1019,
+      "name": "Office Chair (Ergonomic, Set of 2)",
+      "images": [
+        "https://example.com/images/furniture3a.jpg",
+        "https://example.com/images/furniture3b.jpg"
+      ],
+      "price": 700,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "DeskWorks",
+      "location": "Pune, India",
+      "condition": "Refurbished",
+      "availability": "Available",
+      "deposit": 2000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Ergonomic mesh chairs with lumbar support.",
+      "posted_at": "2025-08-03T10:00:00Z"
+    },
+    {
+      "id": 1020,
+      "name": "Study Table (120cm) + Lamp",
+      "images": [
+        "https://example.com/images/furniture4a.jpg",
+        "https://example.com/images/furniture4b.jpg"
+      ],
+      "price": 600,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "StudyHub",
+      "location": "Hyderabad, India",
+      "condition": "Used",
+      "availability": "Booked",
+      "deposit": 1500,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Wooden study desk with LED lamp and cable tray.",
+      "posted_at": "2025-08-04T10:00:00Z"
+    },
+    {
+      "id": 1021,
+      "name": "Dining Set (4 Chairs)",
+      "images": [
+        "https://example.com/images/furniture5a.jpg",
+        "https://example.com/images/furniture5b.jpg"
+      ],
+      "price": 1100,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "UrbanFurnish",
+      "location": "Chennai, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 3500,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Compact dining table with 4 cushioned chairs.",
+      "posted_at": "2025-08-05T10:00:00Z"
+    },
+    {
+      "id": 1022,
+      "name": "Wardrobe 2-Door",
+      "images": [
+        "https://example.com/images/furniture6a.jpg",
+        "https://example.com/images/furniture6b.jpg"
+      ],
+      "price": 800,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "Closet Co.",
+      "location": "Delhi, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 2500,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Spacious wardrobe with mirrors and lock.",
+      "posted_at": "2025-08-06T10:00:00Z"
+    },
+    {
+      "id": 1023,
+      "name": "Bookshelf (5-Tier)",
+      "images": [
+        "https://example.com/images/furniture7a.jpg",
+        "https://example.com/images/furniture7b.jpg"
+      ],
+      "price": 500,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "BookNest",
+      "location": "Kolkata, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 1500,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Sturdy 5-tier wooden bookshelf, easy assembly.",
+      "posted_at": "2025-08-07T10:00:00Z"
+    },
+    {
+      "id": 1024,
+      "name": "Workstation Desk (L-Shape)",
+      "images": [
+        "https://example.com/images/furniture8a.jpg",
+        "https://example.com/images/furniture8b.jpg"
+      ],
+      "price": 1000,
+      "rate_unit": "per_month",
+      "category": "Furniture",
+      "seller": "OfficeSetups",
+      "location": "Ahmedabad, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 3000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "L-shaped desk with cable management grommets.",
+      "posted_at": "2025-08-08T10:00:00Z"
+    },
+    {
+      "id": 1025,
+      "name": "Studio Apartment - Hinjewadi",
+      "images": [
+        "https://example.com/images/property1a.jpg",
+        "https://example.com/images/property1b.jpg"
+      ],
+      "price": 18000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "Sai Real Estates",
+      "location": "Pune, India",
+      "condition": "Available",
+      "availability": "Available",
+      "deposit": 20000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Fully furnished studio near IT park, Wi‑Fi included.",
+      "posted_at": "2025-08-09T10:00:00Z"
+    },
+    {
+      "id": 1026,
+      "name": "1BHK - Whitefield",
+      "images": [
+        "https://example.com/images/property2a.jpg",
+        "https://example.com/images/property2b.jpg"
+      ],
+      "price": 23000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "UrbanNest Realty",
+      "location": "Bangalore, India",
+      "condition": "Available",
+      "availability": "Available",
+      "deposit": 25000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "1BHK with balcony, covered parking, near metro.",
+      "posted_at": "2025-08-01T10:00:00Z"
+    },
+    {
+      "id": 1027,
+      "name": "2BHK - Noida Sector 62",
+      "images": [
+        "https://example.com/images/property3a.jpg",
+        "https://example.com/images/property3b.jpg"
+      ],
+      "price": 28000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "CityHomes",
+      "location": "Delhi NCR, India",
+      "condition": "Available",
+      "availability": "Booked",
+      "deposit": 30000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Semi-furnished 2BHK with modular kitchen.",
+      "posted_at": "2025-08-02T10:00:00Z"
+    },
+    {
+      "id": 1028,
+      "name": "PG Bed (Men) - Andheri East",
+      "images": [
+        "https://example.com/images/property4a.jpg",
+        "https://example.com/images/property4b.jpg"
+      ],
+      "price": 9000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "StayEase",
+      "location": "Mumbai, India",
+      "condition": "Available",
+      "availability": "Available",
+      "deposit": 5000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Shared room PG, 3 meals, AC, laundry.",
+      "posted_at": "2025-08-03T10:00:00Z"
+    },
+    {
+      "id": 1029,
+      "name": "Co-working Hot Desk - HSR Layout",
+      "images": [
+        "https://example.com/images/property5a.jpg",
+        "https://example.com/images/property5b.jpg"
+      ],
+      "price": 6000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "DeskShare",
+      "location": "Bangalore, India",
+      "condition": "Available",
+      "availability": "Available",
+      "deposit": 5000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Hot desk access M–F with meeting room credits.",
+      "posted_at": "2025-08-04T10:00:00Z"
+    },
+    {
+      "id": 1030,
+      "name": "Retail Shop 300 sq.ft - Charminar",
+      "images": [
+        "https://example.com/images/property6a.jpg",
+        "https://example.com/images/property6b.jpg"
+      ],
+      "price": 32000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "HyCity Realty",
+      "location": "Hyderabad, India",
+      "condition": "Available",
+      "availability": "Available",
+      "deposit": 35000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Ground-floor retail space on busy street.",
+      "posted_at": "2025-08-05T10:00:00Z"
+    },
+    {
+      "id": 1031,
+      "name": "3BHK Villa - ECR",
+      "images": [
+        "https://example.com/images/property7a.jpg",
+        "https://example.com/images/property7b.jpg"
+      ],
+      "price": 55000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "SeaBreeze Homes",
+      "location": "Chennai, India",
+      "condition": "Available",
+      "availability": "Available",
+      "deposit": 60000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Independent villa with garden and parking.",
+      "posted_at": "2025-08-06T10:00:00Z"
+    },
+    {
+      "id": 1032,
+      "name": "Warehouse 1000 sq.ft - Narol",
+      "images": [
+        "https://example.com/images/property8a.jpg",
+        "https://example.com/images/property8b.jpg"
+      ],
+      "price": 45000,
+      "rate_unit": "per_month",
+      "category": "Property",
+      "seller": "LogiLet",
+      "location": "Ahmedabad, India",
+      "condition": "Available",
+      "availability": "Available",
+      "deposit": 50000,
+      "min_rental_days": 30,
+      "max_rental_days": 365,
+      "description": "Dry storage warehouse, truck access, 24/7 security.",
+      "posted_at": "2025-08-07T10:00:00Z"
+    },
+    {
+      "id": 1033,
+      "name": "Spider‑Man Suit (Far From Home)",
+      "images": [
+        "https://example.com/images/cosplay1a.jpg",
+        "https://example.com/images/cosplay1b.jpg"
+      ],
+      "price": 800,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "HeroHub",
+      "location": "Mumbai, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 2000,
+      "min_rental_days": 1,
+      "max_rental_days": 5,
+      "description": "Stretch fabric suit with detachable mask; sizes M/L.",
+      "posted_at": "2025-08-08T10:00:00Z"
+    },
+    {
+      "id": 1034,
+      "name": "Naruto Uzumaki Set",
+      "images": [
+        "https://example.com/images/cosplay2a.jpg",
+        "https://example.com/images/cosplay2b.jpg"
+      ],
+      "price": 500,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "Anime Alley",
+      "location": "Delhi, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 1500,
+      "min_rental_days": 1,
+      "max_rental_days": 7,
+      "description": "Jacket, pants, headband, pouch; sizes S–XL.",
+      "posted_at": "2025-08-09T10:00:00Z"
+    },
+    {
+      "id": 1035,
+      "name": "Mandalorian Armor (Beskar)",
+      "images": [
+        "https://example.com/images/cosplay3a.jpg",
+        "https://example.com/images/cosplay3b.jpg"
+      ],
+      "price": 1500,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "CosTech Props",
+      "location": "Bangalore, India",
+      "condition": "Used",
+      "availability": "Booked",
+      "deposit": 4000,
+      "min_rental_days": 1,
+      "max_rental_days": 3,
+      "description": "Armor set + helmet; limited visibility, handler recommended.",
+      "posted_at": "2025-08-01T10:00:00Z"
+    },
+    {
+      "id": 1036,
+      "name": "Witcher Geralt Armor",
+      "images": [
+        "https://example.com/images/cosplay4a.jpg",
+        "https://example.com/images/cosplay4b.jpg"
+      ],
+      "price": 1200,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "Epic Cosplay",
+      "location": "Pune, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 3000,
+      "min_rental_days": 1,
+      "max_rental_days": 5,
+      "description": "Leather-look armor, sword prop (foam), wig included.",
+      "posted_at": "2025-08-02T10:00:00Z"
+    },
+    {
+      "id": 1037,
+      "name": "Demon Slayer Tanjiro",
+      "images": [
+        "https://example.com/images/cosplay5a.jpg",
+        "https://example.com/images/cosplay5b.jpg"
+      ],
+      "price": 600,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "Otaku Closet",
+      "location": "Hyderabad, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 2000,
+      "min_rental_days": 1,
+      "max_rental_days": 7,
+      "description": "Haori, uniform, earrings; katana prop (foam).",
+      "posted_at": "2025-08-03T10:00:00Z"
+    },
+    {
+      "id": 1038,
+      "name": "Princess Zelda (Tears of the Kingdom)",
+      "images": [
+        "https://example.com/images/cosplay6a.jpg",
+        "https://example.com/images/cosplay6b.jpg"
+      ],
+      "price": 900,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "Hyrule Wardrobe",
+      "location": "Chennai, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 2500,
+      "min_rental_days": 1,
+      "max_rental_days": 5,
+      "description": "Dress, wig, accessories; sizes S–L.",
+      "posted_at": "2025-08-04T10:00:00Z"
+    },
+    {
+      "id": 1039,
+      "name": "Iron Man Mk 7 (Foam Build)",
+      "images": [
+        "https://example.com/images/cosplay7a.jpg",
+        "https://example.com/images/cosplay7b.jpg"
+      ],
+      "price": 1600,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "ArmorWorks",
+      "location": "Ahmedabad, India",
+      "condition": "Used",
+      "availability": "Available",
+      "deposit": 5000,
+      "min_rental_days": 1,
+      "max_rental_days": 3,
+      "description": "Full suit with LEDs (battery included).",
+      "posted_at": "2025-08-05T10:00:00Z"
+    },
+    {
+      "id": 1040,
+      "name": "Harry Potter Robe Set",
+      "images": [
+        "https://example.com/images/cosplay8a.jpg",
+        "https://example.com/images/cosplay8b.jpg"
+      ],
+      "price": 400,
+      "rate_unit": "per_day",
+      "category": "Cosplay",
+      "seller": "Wizard Wears",
+      "location": "Kolkata, India",
+      "condition": "Like New",
+      "availability": "Available",
+      "deposit": 1000,
+      "min_rental_days": 1,
+      "max_rental_days": 7,
+      "description": "Robe, tie, scarf; house choices available.",
+      "posted_at": "2025-08-06T10:00:00Z"
+    }
+  ]
+}

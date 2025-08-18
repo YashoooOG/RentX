@@ -1,31 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Registration Form</title>
-    
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <!-- Link to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Link to your external CSS file -->
     <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
+    <header>
+        <nav class="navbar navbar-light navbar-custom-bg px-3 py-3">
+            <!-- Logo + Name -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="images/D1Qy2q01-cropped.svg" alt="Logo" class="logo-svg">
+                <span>RentX</span>
+            </a>
 
-    <!-- Theme toggle icons -->
-    <div class="theme-toggle">
-        <i class="fas fa-sun" id="light-icon"></i>
-        <i class="fas fa-moon" id="dark-icon"></i>
-    </div>
+            <!-- Spacer to push buttons to the right -->
+            <div class="flex-grow-1"></div>
 
-    <!-- Main container for the forms -->
-    <div class="container" id="container">
+            <!-- Login and Signup Buttons - Right aligned -->
+            <div class="d-flex align-items-center">
+                <!-- Buttons for larger screens -->
+                <!-- <div class="d-none d-md-flex">
+                    <button class="btn btn-link text-decoration-none text-black me-2">Login</button>
+                    <button class="btn btn-dark btn-round text-nowrap">Create Account</button>
+                </div>
+
+                <div class="d-md-none">
+                    <button class="btn btn-dark btn-round">Sign In</button>
+                </div> -->
+                <div class="theme" id="theme">
+                    <i class="fa-regular fa-lightbulb" id="light"></i>
+                    <i class="fa-regular fa-moon" id="dark"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container" id="container">
         <!-- Sign Up (Registration) Form -->
         <div class="form-container sign-up-container">
             <form action="#">
@@ -70,8 +98,12 @@
             </div>
         </div>
     </div>
+    </main>
 
-    <!-- Link to your external JavaScript file -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script src="login.js"></script>
 </body>
+
 </html>

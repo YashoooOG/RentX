@@ -1,28 +1,98 @@
-       /* * === GENERAL STYLES (NOW DEFAULT DARK) ===
- * These are the basic styles that apply to the whole page.
- */
-
-/* The '*' selects every single element on the page */
-* {
-    /* This makes sure that padding and borders are included in the element's total width and height */
-    box-sizing: border-box;
+*{
     margin: 0;
     padding: 0;
+    /* background-color: #f8f8f8; */
+}
+.btn-round {
+    border-radius: 5px;
+        border: 2px solid #000;
+    }
+
+
+
+.logo-svg {
+    height: 30px;
+    margin-right: 5px;
+    /* margin-left: 1vw; */
+    
+}   
+
+.input-group {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
 }
 
-/* Styling for the main body of the page */
-body {
-    background-color: #121212; /* Dark background for default mode */
-    color: #f1f1f1; /* Light text color for default mode */
-    font-family: 'Poppins', sans-serif; /* Sets the font for the page */
-    
-    /* Flexbox is used here to center the main container perfectly on the page */
+.input-group .form-control {
+    border: none;
+    box-shadow: none;
+    background-color: white;
+}
+
+.white-icon {
+  color: white;
+}
+
+.input-group .btn {
+    border: none !important;
+    border-radius: 0 3px 3px 0 !important;
+    background-color: transparent;
+    box-shadow: none;
+    background: #000;
+    margin: 0;
+    padding: 8px 12px;
+}
+
+.person {
+    font-size: 2rem !important;
+}
+
+.btn-dark:hover {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid black !important;
+}
+
+.navbar-custom-bg {
+    background-color: #ffffff !important;
+}
+
+.btn-link {
+    border: 2px solid transparent !important;
+}
+
+.btn-link:hover {
+    text-decoration: none !important;
+    border: 2px solid black !important;
+    background-color: white !important;
+    color: black !important;
+}
+
+.theme {
+    margin: auto 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #000000;
+    z-index: 1001;
+}
+
+#dark{
+    display: none;
+}
+
+/* Default light mode styles */
+main {
+    background-color: #f0f2f5; /* Light background for default mode */
+    color: #333; /* Dark text color for default mode */
+    font-family: 'Poppins', sans-serif;
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center;   /* Centers vertically */
-    height: 100vh; /* Makes the body take up the full height of the viewport */
-    
-    /* This makes the color changes smooth when we switch themes */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -43,7 +113,7 @@ span {
 }
 
 a {
-    color: #f1f1f1;
+    color: #333; /* Dark color for light mode */
     font-size: 14px;
     text-decoration: none; /* Removes the underline from links */
     margin: 15px 0;
@@ -52,9 +122,9 @@ a {
 /* Styling for all buttons */
 button {
     border-radius: 20px;
-    border: 1px solid #f1f1f1;
-    background-color: #f1f1f1;
-    color: #1f1f1f;
+    border: 1px solid #1f1f1f; /* Dark border for light mode */
+    background-color: #1f1f1f; /* Dark background for light mode */
+    color: #FFFFFF; /* Light text for light mode */
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
@@ -72,12 +142,12 @@ button:active {
 /* The "ghost" button is the one with a transparent background and a border */
 button.ghost {
     background-color: transparent;
-    border-color: #1f1f1f;
-    color: #1f1f1f;
+    border-color: #FFFFFF; /* Light border for ghost buttons */
+    color: #FFFFFF; /* Light text for ghost buttons */
 }
 
 form {
-    background-color: #1e1e1e;
+    background-color: #ffffff; /* Light background for forms */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,13 +158,13 @@ form {
 }
 
 input {
-    background-color: #2c2c2c;
+    background-color: #eee; /* Light background for inputs */
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
     border-radius: 5px;
-    color: #f1f1f1;
+    color: #333; /* Dark text for inputs */
 }
 
 /* * === LAYOUT & CONTAINER STYLES ===
@@ -102,7 +172,7 @@ input {
  */
 
 .container {
-    background-color: #1e1e1e;
+    background-color: #ffffff; /* Light background for container */
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     position: relative; /* Needed for positioning the form panels inside */
@@ -164,8 +234,8 @@ input {
 }
 
 .overlay {
-    background: #f1f1f1;
-    color: #1f1f1f;
+    background: #1f1f1f; /* Dark background for overlay */
+    color: #FFFFFF; /* Light text for overlay */
     position: relative;
     left: -100%;
     height: 100%;
@@ -175,7 +245,11 @@ input {
 }
 
 .overlay p {
-    color: #1f1f1f;
+    color: #FFFFFF; /* Light text for overlay paragraphs */
+}
+
+.overlay h1 {
+    color: #FFFFFF; /* Light text for overlay headings */
 }
 
 .container.right-panel-active .overlay {
@@ -214,77 +288,114 @@ input {
     transform: translateX(20%);
 }
 
-/* * === THEME TOGGLE ===
- */
 
-.theme-toggle {
-    position: fixed; /* Keeps the toggle in the same place even when scrolling */
-    top: 20px;
-    right: 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 200; /* Ensures it's on top of everything */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
 }
 
-/* By default, the moon (dark mode) icon is hidden */
-#dark-icon {
+body.dark-mode main {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* Dark mode navbar styles */
+body.dark-mode .navbar {
+    background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar-custom-bg {
+    background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar-brand {
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode .navbar-brand span {
+    color: #f1f1f1;
+}
+
+/* Dark mode button styles in navbar */
+body.dark-mode .btn-link {
+    color: #f1f1f1 !important;
+    border-color: transparent !important;
+}
+
+body.dark-mode .btn-link:hover {
+    background-color: #333 !important;
+    color: #f1f1f1 !important;
+    border: 2px solid #f1f1f1 !important;
+}
+
+body.dark-mode .btn-dark {
+    background-color: #f1f1f1;
+    color: #000;
+    border-color: #f1f1f1;
+}
+
+body.dark-mode .btn-dark:hover {
+    background-color: #333 !important;
+    color: #f1f1f1 !important;
+    border: 2px solid #f1f1f1 !important;
+}
+
+/* Theme toggle in dark mode */
+body.dark-mode .theme {
+    color: #f1f1f1;
+}
+
+body.dark-mode #light {
     display: none;
 }
 
-/* * === LIGHT MODE STYLES ===
- * When the body has the 'dark-mode' class, these styles will apply.
- */
-
-body.dark-mode {
-    background-color: #f0f2f5;
-    color: #333;
+body.dark-mode #dark {
+    display: block;
 }
 
 .dark-mode .container,
 .dark-mode form {
-    background-color: #ffffff;
+    background-color: #1e1e1e;
 }
 
 .dark-mode h1,
-.dark-mode a,
-.dark-mode .theme-toggle {
-    color: #333;
+.dark-mode a {
+    color: #f1f1f1;
 }
 
 .dark-mode p,
 .dark-mode span {
-     color: #555;
+    color: #f1f1f1;
 }
 
 .dark-mode input {
-    background-color: #eee;
-    color: #333;
+    background-color: #2c2c2c;
+    color: #f1f1f1;
 }
 
 .dark-mode button {
-    border-color: #1f1f1f;
-    background-color: #1f1f1f;
-    color: #FFFFFF;
+    border-color: #f1f1f1;
+    background-color: #f1f1f1;
+    color: #1f1f1f;
 }
 
 .dark-mode button.ghost {
     background-color: transparent;
-    border-color: #FFFFFF;
-    color: #FFFFFF;
+    border-color: #1f1f1f;
+    color: #1f1f1f;
 }
 
 .dark-mode .overlay {
-    background: #1f1f1f;
-    color: #FFFFFF;
+    background: #f1f1f1;
+    color: #1f1f1f;
 }
 
-/* This new rule fixes the heading color in the overlay */
 .dark-mode .overlay h1 {
-    color: #FFFFFF;
+    color: #1f1f1f;
 }
 
 .dark-mode .overlay p {
-    color: #FFFFFF;
+    color: #1f1f1f;
 }
 
 .mobile-switch {
@@ -339,7 +450,7 @@ body.dark-mode {
         margin-top: 20px;
         background: none;
         border: none;
-        color: #f1f1f1;
+        color: #1f1f1f; /* Dark color for light mode */
         font-weight: bold;
         text-decoration: underline;
         text-transform: none;
@@ -347,8 +458,8 @@ body.dark-mode {
     }
 
     .dark-mode .mobile-switch {
-        color: #1f1f1f;
-        background: none; /* Explicitly set background to none */
-        border: none; /* Explicitly set border to none */
+        color: #f1f1f1; /* Light color for dark mode */
+        background: none;
+        border: none;
     }
 }
