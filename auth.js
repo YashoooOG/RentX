@@ -21,8 +21,10 @@ function logout() {
 
 // Protect page - redirect to login if not logged in
 function protectPage() {
-    if (!isLoggedIn()) {
-        alert('Please log in to access this page!');
+    const user = getCurrentUser();
+    if (!user) {
+        // Redirect to login if not authenticated
+        alert('Please log in to access this page.');
         window.location.href = 'login.html';
         return false;
     }
