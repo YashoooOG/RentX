@@ -156,6 +156,18 @@ body {
     }
 } */
 
+.btn-sus{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: black;
+    
+}
+.btn-sus:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid #000000;
+}
+
 .main-header {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.07);
     z-index: 10;

@@ -25,10 +25,10 @@
             </a>
 
             <!-- Search form with constraints -->
-            <form class="search-form d-flex justify-content-center mx-2" role="search">
+            <form class="search-form d-flex justify-content-center mx-2" role="search" id="searchForm">
                 <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search " aria-label="Search">
-                    <button class="btn" type="submit"><i class="bi bi-search white-icon"></i></button>
+                    <input class="form-control" type="search" placeholder="Search products..." aria-label="Search" id="searchInput">
+                    <button class="btn" type="submit" id="searchButton"><i class="bi bi-search white-icon"></i></button>
                 </div>
             </form>
             
@@ -40,7 +40,7 @@
                 </button>
                 
                 <!-- Profile button (shown when logged in) -->
-                <button class="btn btn-outline-dark me-2" onclick="window.location.href='profile.html'" 
+                <button class="btn btn-sus btn-outline-dark me-2" onclick="window.location.href='profile.html'" 
                         title="My Profile" id="profileBtn" style="display: none;">
                     <i class="bi bi-person-circle"></i> Profile
                 </button>
@@ -57,7 +57,7 @@
                 </div>
                 
                 <!-- Logout button (shown when logged in) -->
-                <button class="btn btn-danger btn-round" onclick="logout()" id="logoutBtn" style="display: none;">
+                <button class="btn btn-dark btn-round" onclick="logout()" id="logoutBtn" style="display: none;">
                     <i class="bi bi-box-arrow-right"></i> Logout
                 </button>
                 
