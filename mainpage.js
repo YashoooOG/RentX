@@ -153,17 +153,17 @@ async function loadProducts(category = null, searchTerm = null) {
       
       card.innerHTML = `
         <div class="card productcard-holder h-100">
-          <div class="productcard-imageholder">
+          <div class="productcard-imageholder" onclick="goToProductDetails(${product.id})" style="cursor: pointer;">
             <img src="${imageUrl}" alt="${product.name}" class="card-img-top" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
             ${isLoggedIn ? `
               <button class="btn btn-sm wishlist-btn ${isInWishlist ? 'wishlist-active' : ''}" 
-                      onclick="toggleWishlist(${product.id}, this)" 
+                      onclick="event.stopPropagation(); toggleWishlist(${product.id}, this)" 
                       title="${isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}">
                 <i class="bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'}"></i>
               </button>
             ` : ''}
           </div>
-          <div class="card-body d-flex flex-column p-3">
+          <div class="card-body d-flex flex-column p-3" onclick="goToProductDetails(${product.id})" style="cursor: pointer;">
             <div class="productcard-info">
               <h5 class="card-title mb-1">${product.name}</h5>
               <h4 class="text-success fw-bold mb-1">₹${product.price}${product.rate_unit ? "/" + product.rate_unit.replace('_', ' ') : ""}</h4>
@@ -173,13 +173,19 @@ async function loadProducts(category = null, searchTerm = null) {
               <p class="text-muted mb-0 small"><i class="bi bi-geo-alt"></i> ${product.location}</p>
               <p class="text-muted mb-0 small"><i class="bi bi-person"></i> ${product.seller}</p>
             </div>
-            <div class="productcard-actions mt-auto">
-              <button class="btn btn-primary flex-grow-1 me-2" onclick="rentItem(${product.id})">
-                <i class="bi bi-calendar-check"></i> Rent Now
+          </div>
+          <div class="card-footer bg-white border-0 p-3 pt-0">
+            <div class="productcard-actions d-flex gap-2">
+              <button class="btn btn-primary flex-grow-1" onclick="goToProductDetails(${product.id})">
+                <i class="bi bi-eye"></i> View Details
               </button>
-              <div class="text-center">
-                <small class="text-muted">Deposit: ₹${product.deposit || 'N/A'}</small>
-              </div>
+              <button class="btn btn-success" onclick="event.stopPropagation(); rentItem(${product.id})" 
+                      ${product.availability !== 'Available' ? 'disabled' : ''}>
+                <i class="bi bi-calendar-check"></i>
+              </button>
+            </div>
+            <div class="text-center mt-2">
+              <small class="text-muted">Deposit: ₹${product.deposit || 'N/A'}</small>
             </div>
           </div>
         </div>
@@ -342,6 +348,11 @@ function rentItem(itemId) {
     return;
   }
   alert('Rental booking feature coming soon! Item ID: ' + itemId);
+}
+
+// Navigate to product details page
+function goToProductDetails(productId) {
+  window.location.href = `product-details.html?id=${productId}`;
 }
 
 // Update wishlist buttons when wishlist changes
