@@ -143,17 +143,36 @@ async function loadProducts(category = null, searchTerm = null) {
     products.forEach(product => {
       const card = document.createElement("div");
       card.classList.add("productcard-holder");
+      
+      // Check if item is in wishlist (if user is logged in)
+      const isInWishlist = window.WishlistManager ? WishlistManager.isInWishlist(product.id) : false;
+      const isLoggedIn = getCurrentUser() !== null;
+      
       card.innerHTML = `
         <div class="productcard-imageholder">
           <img src="${product.images[0]}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+          ${isLoggedIn ? `
+            <button class="btn btn-sm wishlist-btn ${isInWishlist ? 'wishlist-active' : ''}" 
+                    onclick="toggleWishlist(${product.id}, this)" 
+                    title="${isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}">
+              <i class="bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'}"></i>
+            </button>
+          ` : ''}
         </div>
         <div class="productcard-info">
           <h3>${product.name}</h3>
-          <h4>${product.price} ${product.rate_unit ? "/" + product.rate_unit : ""}</h4>
+          <h4>₹${product.price}${product.rate_unit ? "/" + product.rate_unit.replace('_', ' ') : ""}</h4>
+          <span class="badge bg-secondary">${product.category}</span>
         </div>
         <div class="productcard-infobar">
-          <p>${product.location}</p>
-          <p>${product.seller}</p>
+          <p><i class="bi bi-geo-alt"></i> ${product.location}</p>
+          <p><i class="bi bi-person"></i> ${product.seller}</p>
+        </div>
+        <div class="productcard-actions mt-2">
+          <button class="btn btn-primary btn-sm" onclick="rentItem(${product.id})">
+            <i class="bi bi-calendar-check"></i> Rent Now
+          </button>
+          <small class="text-muted">Deposit: ₹${product.deposit || 'N/A'}</small>
         </div>
       `;
       container.appendChild(card);
@@ -280,3 +299,57 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load default random cards
   loadProducts();
 });
+
+// Wishlist toggle function
+function toggleWishlist(itemId, buttonElement) {
+  if (!getCurrentUser()) {
+    alert('Please login to add items to wishlist');
+    return;
+  }
+  
+  if (window.WishlistManager) {
+    const isCurrentlyInWishlist = WishlistManager.isInWishlist(itemId);
+    
+    if (isCurrentlyInWishlist) {
+      WishlistManager.removeFromWishlist(itemId);
+      // Update button appearance
+      buttonElement.classList.remove('wishlist-active');
+      buttonElement.innerHTML = '<i class="bi bi-heart"></i>';
+      buttonElement.title = 'Add to wishlist';
+    } else {
+      WishlistManager.addToWishlist(itemId);
+      // Update button appearance
+      buttonElement.classList.add('wishlist-active');
+      buttonElement.innerHTML = '<i class="bi bi-heart-fill"></i>';
+      buttonElement.title = 'Remove from wishlist';
+    }
+  }
+}
+
+// Rent item function (placeholder)
+function rentItem(itemId) {
+  if (!getCurrentUser()) {
+    alert('Please login to rent items');
+    return;
+  }
+  alert('Rental booking feature coming soon! Item ID: ' + itemId);
+}
+
+// Update wishlist buttons when wishlist changes
+function updateWishlistButtons() {
+  const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+  wishlistButtons.forEach(button => {
+    const itemId = parseInt(button.getAttribute('onclick').match(/\d+/)[0]);
+    const isInWishlist = window.WishlistManager ? WishlistManager.isInWishlist(itemId) : false;
+    
+    if (isInWishlist) {
+      button.classList.add('wishlist-active');
+      button.innerHTML = '<i class="bi bi-heart-fill"></i>';
+      button.title = 'Remove from wishlist';
+    } else {
+      button.classList.remove('wishlist-active');
+      button.innerHTML = '<i class="bi bi-heart"></i>';
+      button.title = 'Add to wishlist';
+    }
+  });
+}

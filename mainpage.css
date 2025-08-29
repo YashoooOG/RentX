@@ -432,3 +432,101 @@ card css dynamicly added
     font-size: 13px;
     color: #666;
 }
+
+/* Wishlist button styles */
+.wishlist-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.wishlist-btn:hover {
+    background: white;
+    color: #e74c3c;
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.wishlist-btn.wishlist-active {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.wishlist-btn.wishlist-active:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+    color: white;
+}
+
+/* Product card improvements */
+.productcard-holder {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.productcard-holder:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.productcard-imageholder {
+    position: relative;
+    overflow: hidden;
+}
+
+.productcard-imageholder img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.productcard-holder:hover .productcard-imageholder img {
+    transform: scale(1.05);
+}
+
+.productcard-actions {
+    padding: 10px 15px;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productcard-actions .btn {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.productcard-actions small {
+    font-size: 12px;
+}
+
+/* Authentication visibility classes */
+.auth-hidden {
+    display: none !important;
+}
+
+.auth-visible {
+    display: block !important;
+}
+
+.auth-flex {
+    display: flex !important;
+}

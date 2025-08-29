@@ -19,7 +19,19 @@ function loadCurrentUser() {
     }
     
     currentUser = JSON.parse(userData);
+    console.log('Current user loaded for profile:', currentUser.username);
     displayUserProfile();
+    
+    // Listen for wishlist updates
+    window.addEventListener('wishlistUpdated', function() {
+        // Reload current user data when wishlist is updated
+        const updatedUserData = localStorage.getItem('currentUser');
+        if (updatedUserData) {
+            currentUser = JSON.parse(updatedUserData);
+            displayStats();
+            displayWishlist();
+        }
+    });
 }
 
 // Load products data

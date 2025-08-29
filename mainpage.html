@@ -13,6 +13,7 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="auth.js"></script>
+    <script src="wishlist-manager.js"></script>
 </head>
 
 <body>
@@ -40,14 +41,14 @@
                 </button>
                 
                 <!-- Profile button (shown when logged in) -->
-                <button class="btn btn-sus btn-outline-dark me-2" onclick="window.location.href='profile.html'" 
-                        title="My Profile" id="profileBtn" style="display: none;">
+                <button class="btn btn-sus btn-outline-dark me-2 auth-hidden" onclick="window.location.href='profile.html'" 
+                        title="My Profile" id="profileBtn">
                     <i class="bi bi-person-circle"></i> Profile
                 </button>
                 
                 <!-- Login/Signup Buttons for larger screens (shown when NOT logged in) -->
                 <div class="d-none d-lg-flex" id="authButtons">
-                    <button class="btn btn-link text-decoration-none text-black me-2" onclick="window.location.href='login.html'">Login</button>
+                    <button class="btn btn-link text-decoration-none text-black me-2" onclick="window.location.href='login.html'">Sign In</button>
                     <button class="btn btn-dark btn-round text-nowrap" onclick="window.location.href='login.html'">Create Account</button>
                 </div>
 
@@ -57,7 +58,7 @@
                 </div>
                 
                 <!-- Logout button (shown when logged in) -->
-                <button class="btn btn-dark btn-round" onclick="logout()" id="logoutBtn" style="display: none;">
+                <button class="btn btn-dark btn-round auth-hidden" onclick="logout()" id="logoutBtn">
                     <i class="bi bi-box-arrow-right"></i> Logout
                 </button>
                 

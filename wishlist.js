@@ -17,6 +17,17 @@ function loadCurrentUser() {
     }
     
     currentUser = JSON.parse(userData);
+    console.log('Current user loaded for wishlist:', currentUser.username);
+    
+    // Listen for wishlist updates
+    window.addEventListener('wishlistUpdated', function() {
+        // Reload current user data when wishlist is updated
+        const updatedUserData = localStorage.getItem('currentUser');
+        if (updatedUserData) {
+            currentUser = JSON.parse(updatedUserData);
+            displayWishlistItems();
+        }
+    });
 }
 
 // Load products data
@@ -126,17 +137,14 @@ function removeFromWishlist(itemId) {
     if (!currentUser) return;
     
     if (confirm('Remove this item from your wishlist?')) {
-        // Remove from user's wishlist
-        currentUser.wishlist = currentUser.wishlist.filter(id => id !== itemId);
+        // Use the centralized wishlist manager
+        WishlistManager.removeFromWishlist(itemId);
         
-        // Update localStorage
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        
-        // Refresh display
-        displayWishlistItems();
-        
-        // Show success message
-        showToast('Item removed from wishlist!');
+        // Refresh current user data
+        const updatedUserData = localStorage.getItem('currentUser');
+        if (updatedUserData) {
+            currentUser = JSON.parse(updatedUserData);
+        }
     }
 }
 
@@ -148,23 +156,27 @@ function rentItem(itemId) {
     }
 }
 
-// Simple toast notification function
+// Simple toast notification function (fallback if manager not available)
 function showToast(message) {
-    // Create a simple toast notification
-    const toast = document.createElement('div');
-    toast.className = 'position-fixed top-0 end-0 m-3 alert alert-success alert-dismissible fade show';
-    toast.style.zIndex = '9999';
-    toast.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    document.body.appendChild(toast);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        if (toast.parentNode) {
-            toast.parentNode.removeChild(toast);
-        }
-    }, 3000);
+    if (window.WishlistManager && WishlistManager.showToast) {
+        WishlistManager.showToast(message, 'info');
+    } else {
+        // Fallback toast
+        const toast = document.createElement('div');
+        toast.className = 'position-fixed top-0 end-0 m-3 alert alert-info alert-dismissible fade show';
+        toast.style.zIndex = '9999';
+        toast.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        // Remove after 3 seconds
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+            }
+        }, 3000);
+    }
 }

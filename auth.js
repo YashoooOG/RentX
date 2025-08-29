@@ -60,20 +60,22 @@ function updateNavbar() {
     if (currentUser) {
         // User is logged in - hide login buttons, show profile
         if (authButtons) {
-            authButtons.classList.add('auth-hidden');
-            authButtons.classList.remove('auth-flex');
+            authButtons.style.display = 'none !important';
+            authButtons.style.setProperty('display', 'none', 'important');
         }
         if (authButtonMobile) {
-            authButtonMobile.classList.add('auth-hidden');
-            authButtonMobile.classList.remove('auth-visible');
+            authButtonMobile.style.display = 'none !important';
+            authButtonMobile.style.setProperty('display', 'none', 'important');
         }
         if (profileBtn) {
             profileBtn.classList.add('auth-visible');
             profileBtn.classList.remove('auth-hidden');
+            profileBtn.style.display = 'block';
         }
         if (logoutBtn) {
             logoutBtn.classList.add('auth-visible');
             logoutBtn.classList.remove('auth-hidden');
+            logoutBtn.style.display = 'block';
         }
         
         // Update profile button text to show username
@@ -87,20 +89,22 @@ function updateNavbar() {
     } else {
         // User is not logged in - show login buttons, hide profile
         if (authButtons) {
-            authButtons.classList.remove('auth-hidden');
-            authButtons.classList.add('auth-flex');
+            authButtons.style.display = '';
+            authButtons.style.removeProperty('display');
         }
         if (authButtonMobile) {
-            authButtonMobile.classList.remove('auth-hidden');
-            authButtonMobile.classList.add('auth-visible');
+            authButtonMobile.style.display = '';
+            authButtonMobile.style.removeProperty('display');
         }
         if (profileBtn) {
             profileBtn.classList.add('auth-hidden');
             profileBtn.classList.remove('auth-visible');
+            profileBtn.style.display = 'none';
         }
         if (logoutBtn) {
             logoutBtn.classList.add('auth-hidden');
             logoutBtn.classList.remove('auth-visible');
+            logoutBtn.style.display = 'none';
         }
     }
 }
