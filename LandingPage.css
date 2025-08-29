@@ -80,6 +80,18 @@
     z-index: 1001;
 }
 
+.btn-sus{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: black;
+    
+}
+.btn-sus:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid #000000;
+}
+
 #dark{
     display: none;
 }
@@ -196,4 +208,8 @@ main {
 
 .dark-mode .logo-svg {
     filter: invert(1);
+}
+
+.auth-hidden {
+    display: none !important;
 }
