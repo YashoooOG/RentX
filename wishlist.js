@@ -6,7 +6,39 @@ let products = [];
 document.addEventListener('DOMContentLoaded', function() {
     loadCurrentUser();
     loadProducts();
+    initializeThemeToggle();
 });
+
+// Initialize theme toggle functionality
+function initializeThemeToggle() {
+    const lightIcon = document.getElementById("light");
+    const darkIcon = document.getElementById("dark");
+    
+    if (lightIcon && darkIcon) {
+        function toggleDarkMode() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            updateUniversalSettings(!isDarkMode);
+            updateThemeIcons();
+        }
+        
+        function updateThemeIcons() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            if (isDarkMode) {
+                lightIcon.style.display = "none";
+                darkIcon.style.display = "block";
+            } else {
+                lightIcon.style.display = "block";
+                darkIcon.style.display = "none";
+            }
+        }
+        
+        lightIcon.addEventListener("click", toggleDarkMode);
+        darkIcon.addEventListener("click", toggleDarkMode);
+        
+        // Update icons after dark mode has been applied
+        setTimeout(updateThemeIcons, 200);
+    }
+}
 
 // Load current user from localStorage
 function loadCurrentUser() {

@@ -373,3 +373,44 @@ function updateWishlistButtons() {
     }
   });
 }
+
+// Dark Mode functionality
+let theme = document.getElementById("theme");
+let lightIcon = document.getElementById("light");
+let darkIcon = document.getElementById("dark");
+
+// Universal dark mode toggle function
+function toggleDarkMode() {
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    updateUniversalSettings(!isDarkMode);
+    updateThemeIcons();
+}
+
+// Update icon state based on current mode
+function updateThemeIcons() {
+    if (lightIcon && darkIcon) {
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        if (isDarkMode) {
+            lightIcon.style.display = "none";
+            darkIcon.style.display = "block";
+        } else {
+            lightIcon.style.display = "block";
+            darkIcon.style.display = "none";
+        }
+    }
+}
+
+// Add event listeners for theme toggle
+if (lightIcon && darkIcon) {
+    lightIcon.addEventListener("click", toggleDarkMode);
+    darkIcon.addEventListener("click", toggleDarkMode);
+}
+
+// Update theme icons when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Update icons after dark mode has been applied
+    setTimeout(updateThemeIcons, 200);
+});
+
+// Listen for wishlist updates
+window.addEventListener('wishlistUpdated', updateWishlistButtons);

@@ -16,7 +16,43 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         showNotFound();
     }
+    
+    // Initialize theme toggle
+    initializeThemeToggle();
 });
+
+// Initialize theme toggle functionality
+function initializeThemeToggle() {
+    const lightIcon = document.getElementById("light");
+    const darkIcon = document.getElementById("dark");
+    
+    if (lightIcon && darkIcon) {
+        // Universal dark mode toggle function
+        function toggleDarkMode() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            updateUniversalSettings(!isDarkMode);
+            updateThemeIcons();
+        }
+        
+        // Update icon state based on current mode
+        function updateThemeIcons() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            if (isDarkMode) {
+                lightIcon.style.display = "none";
+                darkIcon.style.display = "block";
+            } else {
+                lightIcon.style.display = "block";
+                darkIcon.style.display = "none";
+            }
+        }
+        
+        lightIcon.addEventListener("click", toggleDarkMode);
+        darkIcon.addEventListener("click", toggleDarkMode);
+        
+        // Update icons after dark mode has been applied
+        setTimeout(updateThemeIcons, 200);
+    }
+}
 
 // Load product data and display details
 async function loadProductDetails(productId) {

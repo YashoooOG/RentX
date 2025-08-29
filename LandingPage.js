@@ -1,7 +1,3 @@
-let theme = document.getElementById("theme");
-let lightIcon = document.getElementById("light");
-let darkIcon = document.getElementById("dark");
-
 document.getElementById("nextBtn").addEventListener("click", function() {
     // Check if user is logged in, if so go to mainpage, otherwise go to login
     const currentUser = localStorage.getItem('currentUser');
@@ -12,16 +8,7 @@ document.getElementById("nextBtn").addEventListener("click", function() {
     }
 });
 
-lightIcon.addEventListener("click", () => {
-    document.body.classList.add("dark-mode");
-    lightIcon.style.display = "none";
-    darkIcon.style.display = "block";
+// Initialize the universal theme toggle system
+document.addEventListener('DOMContentLoaded', () => {
+    initializeThemeToggle();
 });
-
-darkIcon.addEventListener("click", () => {
-    document.body.classList.remove("dark-mode");
-    darkIcon.style.display = "none";
-    lightIcon.style.display = "block";
-});
-
-// Note: Auth UI is now handled by auth.js updateNavbar() function

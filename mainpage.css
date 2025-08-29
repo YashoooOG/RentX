@@ -591,3 +591,114 @@ card css dynamicly added
 .auth-flex {
     display: flex !important;
 }
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .navbar-custom-bg {
+    background-color: #2d2d2d !important;
+}
+
+.dark-mode .navbar-brand span, 
+.dark-mode .brand-text {
+    color: #ffffff !important;
+}
+
+.dark-mode .btn-link {
+    color: #ffffff !important;
+}
+
+.dark-mode .btn-link:hover {
+    color: #cccccc !important;
+}
+
+.dark-mode .btn-dark {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.dark-mode .btn-dark:hover {
+    background-color: #e6e6e6 !important;
+    border-color: #e6e6e6 !important;
+}
+
+.dark-mode .btn-outline-dark {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .btn-outline-dark:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.dark-mode .text-muted {
+    color: #cccccc !important;
+}
+
+.dark-mode .theme {
+    color: #ffffff !important;
+}
+
+.dark-mode .card {
+    background-color: #2d2d2d !important;
+    border-color: #444444 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .card-title {
+    color: #ffffff !important;
+}
+
+.dark-mode .text-success {
+    color: #4ade80 !important;
+}
+
+.dark-mode .badge {
+    background-color: #374151 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .badge.bg-info {
+    background-color: #0ea5e9 !important;
+}
+
+.dark-mode .badge.bg-success {
+    background-color: #10b981 !important;
+}
+
+.dark-mode .badge.bg-danger {
+    background-color: #ef4444 !important;
+}
+
+.dark-mode .badge.bg-secondary {
+    background-color: #6b7280 !important;
+}
+
+.dark-mode .form-control {
+    background-color: #374151 !important;
+    border-color: #6b7280 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .form-control:focus {
+    background-color: #374151 !important;
+    border-color: #9ca3af !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .input-group {
+    border-color: #6b7280 !important;
+}
+
+.dark-mode .logo-svg {
+    filter: invert(1) brightness(2);
+}
+
+.dark-mode .theme i {
+    color: #ffffff !important;
+}
