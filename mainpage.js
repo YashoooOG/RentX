@@ -142,37 +142,46 @@ async function loadProducts(category = null, searchTerm = null) {
 
     products.forEach(product => {
       const card = document.createElement("div");
-      card.classList.add("productcard-holder");
+      card.classList.add("col-lg-4", "col-md-6", "col-sm-12", "mb-4");
       
       // Check if item is in wishlist (if user is logged in)
       const isInWishlist = window.WishlistManager ? WishlistManager.isInWishlist(product.id) : false;
       const isLoggedIn = getCurrentUser() !== null;
       
+      // Get the first image, handle both single image and array
+      const imageUrl = Array.isArray(product.images) ? product.images[0] : product.images || 'https://via.placeholder.com/300x200?text=No+Image';
+      
       card.innerHTML = `
-        <div class="productcard-imageholder">
-          <img src="${product.images[0]}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
-          ${isLoggedIn ? `
-            <button class="btn btn-sm wishlist-btn ${isInWishlist ? 'wishlist-active' : ''}" 
-                    onclick="toggleWishlist(${product.id}, this)" 
-                    title="${isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}">
-              <i class="bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'}"></i>
-            </button>
-          ` : ''}
-        </div>
-        <div class="productcard-info">
-          <h3>${product.name}</h3>
-          <h4>₹${product.price}${product.rate_unit ? "/" + product.rate_unit.replace('_', ' ') : ""}</h4>
-          <span class="badge bg-secondary">${product.category}</span>
-        </div>
-        <div class="productcard-infobar">
-          <p><i class="bi bi-geo-alt"></i> ${product.location}</p>
-          <p><i class="bi bi-person"></i> ${product.seller}</p>
-        </div>
-        <div class="productcard-actions mt-2">
-          <button class="btn btn-primary btn-sm" onclick="rentItem(${product.id})">
-            <i class="bi bi-calendar-check"></i> Rent Now
-          </button>
-          <small class="text-muted">Deposit: ₹${product.deposit || 'N/A'}</small>
+        <div class="card productcard-holder h-100">
+          <div class="productcard-imageholder">
+            <img src="${imageUrl}" alt="${product.name}" class="card-img-top" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+            ${isLoggedIn ? `
+              <button class="btn btn-sm wishlist-btn ${isInWishlist ? 'wishlist-active' : ''}" 
+                      onclick="toggleWishlist(${product.id}, this)" 
+                      title="${isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}">
+                <i class="bi ${isInWishlist ? 'bi-heart-fill' : 'bi-heart'}"></i>
+              </button>
+            ` : ''}
+          </div>
+          <div class="card-body d-flex flex-column p-3">
+            <div class="productcard-info">
+              <h5 class="card-title mb-1">${product.name}</h5>
+              <h4 class="text-success fw-bold mb-1">₹${product.price}${product.rate_unit ? "/" + product.rate_unit.replace('_', ' ') : ""}</h4>
+              <span class="badge bg-secondary mb-2">${product.category}</span>
+            </div>
+            <div class="productcard-infobar mb-2">
+              <p class="text-muted mb-0 small"><i class="bi bi-geo-alt"></i> ${product.location}</p>
+              <p class="text-muted mb-0 small"><i class="bi bi-person"></i> ${product.seller}</p>
+            </div>
+            <div class="productcard-actions mt-auto">
+              <button class="btn btn-primary flex-grow-1 me-2" onclick="rentItem(${product.id})">
+                <i class="bi bi-calendar-check"></i> Rent Now
+              </button>
+              <div class="text-center">
+                <small class="text-muted">Deposit: ₹${product.deposit || 'N/A'}</small>
+              </div>
+            </div>
+          </div>
         </div>
       `;
       container.appendChild(card);

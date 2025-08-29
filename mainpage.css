@@ -370,9 +370,7 @@ body {
 card css dynamicly added
 */
 .cardicondisplay {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    /* Now using Bootstrap grid system */
 }
 
 .productcard-holder {
@@ -499,6 +497,69 @@ card css dynamicly added
 
 .productcard-holder:hover .productcard-imageholder img {
     transform: scale(1.05);
+}
+
+/* Product card content spacing - Ultra compact */
+.productcard-info {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.productcard-info .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px !important;
+}
+
+.productcard-info h4 {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin-bottom: 4px !important;
+}
+
+.productcard-info .badge {
+    font-size: 0.7rem;
+    padding: 0.2em 0.4em;
+    margin-bottom: 6px !important;
+}
+
+.productcard-infobar {
+    margin-top: 0;
+    margin-bottom: 8px !important;
+}
+
+.productcard-infobar p {
+    font-size: 0.8rem;
+    line-height: 1.1;
+    margin-bottom: 2px !important;
+}
+
+.productcard-infobar p:last-child {
+    margin-bottom: 0 !important;
+}
+
+.productcard-infobar i {
+    width: 12px;
+    text-align: center;
+    margin-right: 4px;
+    font-size: 0.75rem;
+}
+
+/* Ultra compact card body */
+.card-body {
+    padding: 12px !important;
+}
+
+.productcard-actions {
+    margin-top: 8px !important;
+    padding-top: 8px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.productcard-actions .btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
 }
 
 .productcard-actions {

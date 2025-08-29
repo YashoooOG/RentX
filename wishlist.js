@@ -81,11 +81,17 @@ function displayWishlistItems() {
         const availabilityBadge = item.availability === 'Available' 
             ? '<span class="badge bg-success">Available</span>'
             : '<span class="badge bg-secondary">Not Available</span>';
+        
+        // Get the first image, handle both single image and array
+        const imageUrl = Array.isArray(item.images) ? item.images[0] : item.images || 'https://via.placeholder.com/300x200?text=No+Image';
             
         return `
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card wishlist-item h-100">
-                    <div class="card-body">
+                    <img src="${imageUrl}" class="card-img-top" alt="${item.name}" 
+                         style="height: 200px; object-fit: cover;" 
+                         onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+                    <div class="card-body d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-start mb-2">
                             <h5 class="card-title">${item.name}</h5>
                             <button class="btn btn-sm btn-outline-danger" onclick="removeFromWishlist(${item.id})" title="Remove from wishlist">

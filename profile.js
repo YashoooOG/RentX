@@ -173,22 +173,29 @@ function displayWishlist() {
     
     const wishlistHTML = `
         <div class="row">
-            ${displayItems.map(item => `
-                <div class="col-md-4 mb-3">
-                    <div class="wishlist-item">
-                        <div class="p-3">
-                            <h6 class="mb-2">${item.name}</h6>
-                            <p class="text-muted mb-2">
-                                <i class="bi bi-geo-alt"></i> ${item.location}
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-success fw-bold">₹${item.price}/${item.rate_unit.replace('_', ' ')}</span>
-                                <span class="badge ${item.availability === 'Available' ? 'bg-success' : 'bg-secondary'}">${item.availability}</span>
+            ${displayItems.map(item => {
+                // Get the first image, handle both single image and array
+                const imageUrl = Array.isArray(item.images) ? item.images[0] : item.images || 'https://via.placeholder.com/200x150?text=No+Image';
+                return `
+                    <div class="col-md-4 mb-3">
+                        <div class="card wishlist-item h-100">
+                            <img src="${imageUrl}" class="card-img-top" alt="${item.name}" 
+                                 style="height: 150px; object-fit: cover;" 
+                                 onerror="this.src='https://via.placeholder.com/200x150?text=No+Image'">
+                            <div class="card-body p-3">
+                                <h6 class="card-title mb-2">${item.name}</h6>
+                                <p class="text-muted mb-2">
+                                    <i class="bi bi-geo-alt"></i> ${item.location}
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="text-success fw-bold">₹${item.price}/${item.rate_unit.replace('_', ' ')}</span>
+                                    <span class="badge ${item.availability === 'Available' ? 'bg-success' : 'bg-secondary'}">${item.availability}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `).join('')}
+                `;
+            }).join('')}
         </div>
         ${wishlistItems.length > 3 ? `
             <div class="text-center mt-3">
