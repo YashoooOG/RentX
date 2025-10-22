@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { BiSearch, BiSun, BiMoon } from "react-icons/bi";
+import { BiSearch, BiSun, BiMoon, BiLogOut, BiUser } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from './App.jsx';
 
@@ -8,10 +8,24 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
     const { isDarkTheme, toggleTheme } = useTheme();
     const [showMobileSearch, setShowMobileSearch] = useState(false);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            const userData = localStorage.getItem('user');
+            if (userData) {
+                setUser(JSON.parse(userData));
+            }
+        } else {
+            setUser(null);
+        }
+    }, [isLoggedIn]);
 
     const handleLogout = () => {
+        localStorage.removeItem('user');
         setIsLoggedIn(false);
-        navigate("/login");
+        setUser(null);
+        navigate("/");
     };
 
     const toggleMobileSearch = () => {
@@ -95,15 +109,43 @@ function Header({ isLoggedIn, setIsLoggedIn }) {
                             </div>
                         </>
                     ) : (
-                        <button
-                            onClick={handleLogout}
-                            className={`px-4 py-2 border-2 ${isDarkTheme ? 'hover:text-white' : 'bg-black text-white border-black hover:bg-white hover:text-black'} transition-colors font-medium`}
-                            style={isDarkTheme ? { backgroundColor: '#e8e6e3', color: '#181a1b', borderColor: '#e8e6e3' } : {}}
-                            onMouseEnter={(e) => isDarkTheme && (e.target.style.backgroundColor = '#181a1b', e.target.style.color = '#e8e6e3')}
-                            onMouseLeave={(e) => isDarkTheme && (e.target.style.backgroundColor = '#e8e6e3', e.target.style.color = '#181a1b')}
-                        >
-                            Logout
-                        </button>
+                        <div className="flex items-center space-x-2">
+                            {/* User Dashboard Button - Desktop */}
+                            <button
+                                onClick={() => navigate("/dashboard")}
+                                className={`hidden md:flex items-center space-x-2 px-4 py-2 border-2 ${isDarkTheme ? 'hover:text-black' : 'border-black bg-white text-black hover:bg-black hover:text-white'} transition-colors font-medium`}
+                                style={isDarkTheme ? { backgroundColor: '#181a1b', color: '#e8e6e3', borderColor: '#e8e6e3' } : {}}
+                                onMouseEnter={(e) => isDarkTheme && (e.target.style.backgroundColor = '#e8e6e3', e.target.style.color = '#181a1b')}
+                                onMouseLeave={(e) => isDarkTheme && (e.target.style.backgroundColor = '#181a1b', e.target.style.color = '#e8e6e3')}
+                            >
+                                <BiUser className="text-lg" />
+                                <span>{user?.firstName || user?.username || 'Dashboard'}</span>
+                            </button>
+
+                            {/* User Dashboard Button - Mobile */}
+                            <button
+                                onClick={() => navigate("/dashboard")}
+                                className={`md:hidden flex items-center space-x-1 px-3 py-2 border-2 ${isDarkTheme ? 'hover:text-black' : 'border-black bg-white text-black hover:bg-black hover:text-white'} transition-colors font-medium text-sm`}
+                                style={isDarkTheme ? { backgroundColor: '#181a1b', color: '#e8e6e3', borderColor: '#e8e6e3' } : {}}
+                                onMouseEnter={(e) => isDarkTheme && (e.target.style.backgroundColor = '#e8e6e3', e.target.style.color = '#181a1b')}
+                                onMouseLeave={(e) => isDarkTheme && (e.target.style.backgroundColor = '#181a1b', e.target.style.color = '#e8e6e3')}
+                            >
+                                <BiUser className="text-lg" />
+                                <span>{user?.firstName || user?.username || 'User'}</span>
+                            </button>
+
+                            {/* Logout Button */}
+                            <button
+                                onClick={handleLogout}
+                                className={`p-2 border-2 ${isDarkTheme ? 'hover:text-white' : 'bg-black text-white border-black hover:bg-white hover:text-black'} transition-colors`}
+                                style={isDarkTheme ? { backgroundColor: '#e8e6e3', color: '#181a1b', borderColor: '#e8e6e3' } : {}}
+                                onMouseEnter={(e) => isDarkTheme && (e.target.style.backgroundColor = '#181a1b', e.target.style.color = '#e8e6e3')}
+                                onMouseLeave={(e) => isDarkTheme && (e.target.style.backgroundColor = '#e8e6e3', e.target.style.color = '#181a1b')}
+                                title="Logout"
+                            >
+                                <BiLogOut className="text-lg" />
+                            </button>
+                        </div>
                     )}
 
                     {/* Theme Toggle */}

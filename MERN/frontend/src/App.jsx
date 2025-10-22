@@ -1,12 +1,16 @@
-import { useState, createContext, useContext } from 'react'
+import React from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import './App.css'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import Header from './Header.jsx';
 import Home from './Home.jsx';
 import Footer from './Footer.jsx';
 import LegalInfo from './LegalInfo.jsx';
 import Support from './Support.jsx';
-import LoginSignup from './LoginSignup.jsx'; // Updated import
+import LoginSignup from './LoginSignup.jsx'; 
+import UserDashboard from './UserDashboard.jsx';
+import NewProduct from './NewProduct';
+import About from './About';
 // Create Theme Context
 const ThemeContext = createContext();
 
@@ -22,27 +26,40 @@ function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    // Check if user is logged in on component mount
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
   };
 
   return (
     <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>
-      <div className={`min-h-screen ${isDarkTheme ? 'text-white' : 'bg-white text-black'}`} style={isDarkTheme ? { backgroundColor: '#181a1b' } : {}}>
-        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-        
-        <main style={{ minHeight: "80vh", padding: "0" }}> 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/legal" element={<LegalInfo />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/login" element={<LoginSignup />} /> 
-            <Route path="/signup" element={<LoginSignup />} /> 
-            {/* Add other routes here */}
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Router>
+        <div className={`min-h-screen ${isDarkTheme ? 'text-white' : 'bg-white text-black'}`} style={isDarkTheme ? { backgroundColor: '#181a1b' } : {}}>
+          <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          
+          <main style={{ minHeight: "80vh", padding: "0" }}> 
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/legal" element={<LegalInfo />} />
+              <Route path="/support" element={<Support />} />
+              <Route path="/login" element={<LoginSignup setIsLoggedIn={setIsLoggedIn} />} /> 
+              <Route path="/signup" element={<LoginSignup setIsLoggedIn={setIsLoggedIn} />} /> 
+              <Route path="/dashboard" element={<UserDashboard />} /> 
+              <Route path="/add-product" element={<NewProduct />} />
+              {/* Add other routes here */}
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </ThemeContext.Provider>
   )
 }

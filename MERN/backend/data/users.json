@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "username": "user1",
+    "email": "user1@gmail.com",
+    "password": "$2a$10$ZhLandFM6kBlZl2ottnieeaBStTOLnKF118nMwvUYvAWoIM4TpoJG",
+    "firstName": "user",
+    "lastName": "surname",
+    "phoneNumber": "9876543210",
+    "address": "chitkara",
+    "city": "rajpura",
+    "state": "",
+    "zipCode": "140401",
+    "profilePhoto": "",
+    "dateOfBirth": "",
+    "occupation": "",
+    "preferredRentalType": "Any",
+    "maxBudget": 0,
+    "isVerified": false,
+    "memberSince": "2025-10-21T05:20:26.355Z",
+    "createdAt": "2025-10-21T05:20:26.355Z",
+    "updatedAt": "2025-10-21T05:53:20.355Z"
+  }
+]

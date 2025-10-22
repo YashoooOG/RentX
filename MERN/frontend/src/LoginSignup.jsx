@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useTheme } from './App.jsx';
+import { useNavigate } from 'react-router-dom';
 
-const LoginSignup = () => {
+const LoginSignup = ({ setIsLoggedIn }) => {
   const { isDarkTheme } = useTheme();
+  const navigate = useNavigate();
   const [isRightPanelActive, setIsRightPanelActive] = useState(false);
   const [isMobileRegister, setIsMobileRegister] = useState(false);
   const [formData, setFormData] = useState({
@@ -10,6 +12,8 @@ const LoginSignup = () => {
     email: '',
     password: ''
   });
+  const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +51,138 @@ const LoginSignup = () => {
     clearInputFields();
   };
 
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage('');
+
+    // Basic validation
+    if (!formData.username || !formData.email || !formData.password) {
+      setMessage('Please fill in all fields');
+      setIsLoading(false);
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setMessage('Password must be at least 6 characters long');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      console.log('Attempting registration with:', { 
+        username: formData.username, 
+        email: formData.email, 
+        password: '***' 
+      });
+
+      const response = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.log('Error response:', errorText);
+        
+        try {
+          const errorData = JSON.parse(errorText);
+          setMessage(errorData.message || 'Registration failed');
+        } catch {
+          setMessage('Server error. Please check if the backend is running.');
+        }
+        return;
+      }
+
+      const data = await response.json();
+      console.log('Registration successful:', data);
+
+      setMessage('Registration successful! You can now login.');
+      clearInputFields();
+      // Switch to login form
+      setIsRightPanelActive(false);
+      setIsMobileRegister(false);
+    } catch (error) {
+      console.error('Registration error:', error);
+      setMessage('Cannot connect to server. Please check if the backend is running on port 5000.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage('');
+
+    // Basic validation
+    if (!formData.username || !formData.password) {
+      setMessage('Please fill in username and password');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      console.log('Attempting login with:', { 
+        username: formData.username, 
+        password: '***' 
+      });
+
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password
+        }),
+      });
+
+      console.log('Login response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.log('Login error response:', errorText);
+        
+        try {
+          const errorData = JSON.parse(errorText);
+          setMessage(errorData.message || 'Login failed');
+        } catch {
+          setMessage('Server error. Please check if the backend is running.');
+        }
+        return;
+      }
+
+      const data = await response.json();
+      console.log('Login successful:', data);
+
+      setMessage('Login successful!');
+      localStorage.setItem('user', JSON.stringify(data.user));
+      clearInputFields();
+      
+      // Update parent component login state
+      if (setIsLoggedIn) {
+        setIsLoggedIn(true);
+      }
+      
+      // Redirect to home page
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } catch (error) {
+      console.error('Login error:', error);
+      setMessage('Cannot connect to server. Please check if the backend is running on port 5000.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <main 
       className={`flex justify-center items-center min-h-screen font-[Poppins] px-4 py-8`}
@@ -59,6 +195,15 @@ const LoginSignup = () => {
         ${isMobileRegister ? "mobile-register-active" : ""}`}
         style={isDarkTheme ? { backgroundColor: '#1e2022' } : { backgroundColor: '#f5f5f5' }}
       >
+        {/* Display message */}
+        {message && (
+          <div className={`absolute top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded z-50 ${
+            message.includes('successful') ? 'bg-green-500' : 'bg-red-500'
+          } text-white`}>
+            {message}
+          </div>
+        )}
+
         {/* Sign Up Form */}
         <div
           className={`absolute top-0 h-full flex flex-col justify-center items-center px-8 md:px-12 text-center w-full md:w-1/2 transition-all duration-700 ease-in-out
@@ -69,92 +214,100 @@ const LoginSignup = () => {
             Create Account
           </h1>
           
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
-            style={isDarkTheme ? { 
-              backgroundColor: '#1e2022', 
-              color: '#f5f5f5', 
-              borderColor: '#999'
-            } : { 
-              backgroundColor: '#e8e6e3', 
-              color: '#333', 
-              borderColor: '#999' 
-            }}
-          />
-          
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
-            style={isDarkTheme ? { 
-              backgroundColor: '#1e2022', 
-              color: '#f5f5f5', 
-              borderColor: '#999'
-            } : { 
-              backgroundColor: '#e8e6e3', 
-              color: '#333', 
-              borderColor: '#999' 
-            }}
-          />
-          
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
-            style={isDarkTheme ? { 
-              backgroundColor: '#1e2022', 
-              color: '#f5f5f5', 
-              borderColor: '#999'
-            } : { 
-              backgroundColor: '#e8e6e3', 
-              color: '#333', 
-              borderColor: '#999' 
-            }}
-          />
-          
-          <button 
-            className="w-full md:w-auto px-8 py-3 mt-4 border-2 font-bold transition-colors"
-            style={isDarkTheme ? { 
-              backgroundColor: '#f5f5f5', 
-              color: '#333', 
-              borderColor: '#f5f5f5' 
-            } : { 
-              backgroundColor: 'black', 
-              color: 'white', 
-              borderColor: 'black' 
-            }}
-            onMouseEnter={(e) => {
-              if (isDarkTheme) {
-                e.target.style.backgroundColor = '#1e2022';
-                e.target.style.color = '#f5f5f5';
-              } else {
-                e.target.style.backgroundColor = 'white';
-                e.target.style.color = 'black';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (isDarkTheme) {
-                e.target.style.backgroundColor = '#f5f5f5';
-                e.target.style.color = '#333';
-              } else {
-                e.target.style.backgroundColor = 'black';
-                e.target.style.color = 'white';
-              }
-            }}
-          >
-            REGISTER
-          </button>
+          <form onSubmit={handleRegister} className="w-full">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
+              style={isDarkTheme ? { 
+                backgroundColor: '#1e2022', 
+                color: '#f5f5f5', 
+                borderColor: '#999'
+              } : { 
+                backgroundColor: '#e8e6e3', 
+                color: '#333', 
+                borderColor: '#999' 
+              }}
+            />
+            
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
+              style={isDarkTheme ? { 
+                backgroundColor: '#1e2022', 
+                color: '#f5f5f5', 
+                borderColor: '#999'
+              } : { 
+                backgroundColor: '#e8e6e3', 
+                color: '#333', 
+                borderColor: '#999' 
+              }}
+            />
+            
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
+              style={isDarkTheme ? { 
+                backgroundColor: '#1e2022', 
+                color: '#f5f5f5', 
+                borderColor: '#999'
+              } : { 
+                backgroundColor: '#e8e6e3', 
+                color: '#333', 
+                borderColor: '#999' 
+              }}
+            />
+            
+            <button 
+              type="submit"
+              disabled={isLoading}
+              className="w-full md:w-auto px-8 py-3 mt-4 border-2 font-bold transition-colors disabled:opacity-50"
+              style={isDarkTheme ? { 
+                backgroundColor: '#f5f5f5', 
+                color: '#333', 
+                borderColor: '#f5f5f5' 
+              } : { 
+                backgroundColor: 'black', 
+                color: 'white', 
+                borderColor: 'black' 
+              }}
+              onMouseEnter={(e) => {
+                if (!isLoading) {
+                  if (isDarkTheme) {
+                    e.target.style.backgroundColor = '#1e2022';
+                    e.target.style.color = '#f5f5f5';
+                  } else {
+                    e.target.style.backgroundColor = 'white';
+                    e.target.style.color = 'black';
+                  }
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isLoading) {
+                  if (isDarkTheme) {
+                    e.target.style.backgroundColor = '#f5f5f5';
+                    e.target.style.color = '#333';
+                  } else {
+                    e.target.style.backgroundColor = 'black';
+                    e.target.style.color = 'white';
+                  }
+                }
+              }}
+            >
+              {isLoading ? 'REGISTERING...' : 'REGISTER'}
+            </button>
+          </form>
           
           <button
             type="button"
@@ -176,78 +329,86 @@ const LoginSignup = () => {
             Login
           </h1>
           
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
-            style={isDarkTheme ? { 
-              backgroundColor: '#1e2022', 
-              color: '#f5f5f5', 
-              borderColor: '#999'
-            } : { 
-              backgroundColor: '#e8e6e3', 
-              color: '#333', 
-              borderColor: '#999' 
-            }}
-          />
-          
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
-            style={isDarkTheme ? { 
-              backgroundColor: '#1e2022', 
-              color: '#f5f5f5', 
-              borderColor: '#999'
-            } : { 
-              backgroundColor: '#e8e6e3', 
-              color: '#333', 
-              borderColor: '#999' 
-            }}
-          />
-          
-          <a href="#" className="text-sm my-3 hover:underline font-medium" style={isDarkTheme ? { color: '#f5f5f5' } : { color: '#555' }}>
-            Forgot your password?
-          </a>
-          
-          <button 
-            className="w-full md:w-auto px-8 py-3 mt-4 border-2 font-bold transition-colors"
-            style={isDarkTheme ? { 
-              backgroundColor: '#f5f5f5', 
-              color: '#333', 
-              borderColor: '#f5f5f5' 
-            } : { 
-              backgroundColor: 'black', 
-              color: 'white', 
-              borderColor: 'black' 
-            }}
-            onMouseEnter={(e) => {
-              if (isDarkTheme) {
-                e.target.style.backgroundColor = '#1e2022';
-                e.target.style.color = '#f5f5f5';
-              } else {
-                e.target.style.backgroundColor = 'white';
-                e.target.style.color = 'black';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (isDarkTheme) {
-                e.target.style.backgroundColor = '#f5f5f5';
-                e.target.style.color = '#333';
-              } else {
-                e.target.style.backgroundColor = 'black';
-                e.target.style.color = 'white';
-              }
-            }}
-          >
-            LOGIN
-          </button>
+          <form onSubmit={handleLogin} className="w-full">
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
+              style={isDarkTheme ? { 
+                backgroundColor: '#1e2022', 
+                color: '#f5f5f5', 
+                borderColor: '#999'
+              } : { 
+                backgroundColor: '#e8e6e3', 
+                color: '#333', 
+                borderColor: '#999' 
+              }}
+            />
+            
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleInputChange}
+              className="w-full px-4 py-3 my-2 border-2 outline-none font-medium"
+              style={isDarkTheme ? { 
+                backgroundColor: '#1e2022', 
+                color: '#f5f5f5', 
+                borderColor: '#999'
+              } : { 
+                backgroundColor: '#e8e6e3', 
+                color: '#333', 
+                borderColor: '#999' 
+              }}
+            />
+            
+            <a href="#" className="text-sm my-3 hover:underline font-medium" style={isDarkTheme ? { color: '#f5f5f5' } : { color: '#555' }}>
+              Forgot your password?
+            </a>
+            
+            <button 
+              type="submit"
+              disabled={isLoading}
+              className="w-full md:w-auto px-8 py-3 mt-4 border-2 font-bold transition-colors disabled:opacity-50"
+              style={isDarkTheme ? { 
+                backgroundColor: '#f5f5f5', 
+                color: '#333', 
+                borderColor: '#f5f5f5' 
+              } : { 
+                backgroundColor: 'black', 
+                color: 'white', 
+                borderColor: 'black' 
+              }}
+              onMouseEnter={(e) => {
+                if (!isLoading) {
+                  if (isDarkTheme) {
+                    e.target.style.backgroundColor = '#1e2022';
+                    e.target.style.color = '#f5f5f5';
+                  } else {
+                    e.target.style.backgroundColor = 'white';
+                    e.target.style.color = 'black';
+                  }
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isLoading) {
+                  if (isDarkTheme) {
+                    e.target.style.backgroundColor = '#f5f5f5';
+                    e.target.style.color = '#333';
+                  } else {
+                    e.target.style.backgroundColor = 'black';
+                    e.target.style.color = 'white';
+                  }
+                }
+              }}
+            >
+              {isLoading ? 'LOGGING IN...' : 'LOGIN'}
+            </button>
+          </form>
           
           <button
             type="button"

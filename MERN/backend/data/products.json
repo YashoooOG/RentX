@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "u1p1",
+    "images": [
+      "https://images.unsplash.com/photo-1746483965671-44ed1704e4fd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=688"
+    ],
+    "price": 200,
+    "rate_unit": "per_day",
+    "category": "Tools",
+    "seller": "user1",
+    "userId": 1,
+    "location": "delhi",
+    "condition": "New",
+    "availability": "Available",
+    "deposit": 150,
+    "min_rental_days": 5,
+    "max_rental_days": 30,
+    "description": "a test product",
+    "posted_at": "2025-10-21T07:02:42.447Z"
+  }
+]
