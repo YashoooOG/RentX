@@ -12,13 +12,35 @@
     "state": "",
     "zipCode": "140401",
     "profilePhoto": "",
-    "dateOfBirth": "",
+    "dateOfBirth": "2005-12-23",
     "occupation": "",
     "preferredRentalType": "Any",
     "maxBudget": 0,
     "isVerified": false,
     "memberSince": "2025-10-21T05:20:26.355Z",
     "createdAt": "2025-10-21T05:20:26.355Z",
-    "updatedAt": "2025-10-21T05:53:20.355Z"
+    "updatedAt": "2025-10-23T06:52:07.794Z"
+  },
+  {
+    "id": 2,
+    "username": "user2",
+    "email": "user2@gmail.com",
+    "password": "$2a$10$IYWdE3eHieLm7qEHGLJZ4uWNHRrbTAeuXryppOwvH6pweQOdUdYlu",
+    "firstName": "",
+    "lastName": "",
+    "phoneNumber": "",
+    "address": "",
+    "city": "",
+    "state": "",
+    "zipCode": "",
+    "profilePhoto": "",
+    "dateOfBirth": "",
+    "occupation": "",
+    "preferredRentalType": "Any",
+    "maxBudget": 0,
+    "isVerified": false,
+    "memberSince": "2025-10-23T11:27:29.911Z",
+    "createdAt": "2025-10-23T11:27:29.911Z",
+    "updatedAt": "2025-10-23T11:27:29.911Z"
   }
 ]

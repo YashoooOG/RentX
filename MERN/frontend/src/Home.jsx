@@ -1,8 +1,11 @@
 import React from "react";
 import { useTheme } from './App.jsx';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
   const { isDarkTheme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <main className={isDarkTheme ? '' : 'bg-white text-black'} style={isDarkTheme ? { backgroundColor: '#181a1b', color: '#e8e6e3' } : {}}>
@@ -36,6 +39,7 @@ const Home = () => {
               onMouseEnter={(e) => isDarkTheme && (e.target.style.backgroundColor = '#181a1b', e.target.style.color = '#e8e6e3')}
               onMouseLeave={(e) => isDarkTheme && (e.target.style.backgroundColor = '#e8e6e3', e.target.style.color = '#181a1b')}
               id="nextBtn"
+              onClick={() => navigate('/mainpage')}
             >
               Start Renting
             </button>
@@ -48,7 +52,7 @@ const Home = () => {
               style={isDarkTheme ? { backgroundColor: '#181a1b', color: '#e8e6e3', borderColor: '#e8e6e3' } : {}}
               onMouseEnter={(e) => isDarkTheme && (e.target.style.backgroundColor = '#e8e6e3', e.target.style.color = '#181a1b')}
               onMouseLeave={(e) => isDarkTheme && (e.target.style.backgroundColor = '#181a1b', e.target.style.color = '#e8e6e3')}
-              onClick={() => (window.location.href = "new.html")}
+              onClick={() => navigate('/add-product')}
             >
               List Your Item
             </button>

@@ -11,6 +11,8 @@ import LoginSignup from './LoginSignup.jsx';
 import UserDashboard from './UserDashboard.jsx';
 import NewProduct from './NewProduct';
 import About from './About';
+import MainPage from './MainPage.jsx';
+import ProductPage from './ProductPage.jsx';
 // Create Theme Context
 const ThemeContext = createContext();
 
@@ -42,7 +44,7 @@ function App() {
     <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>
       <Router>
         <div className={`min-h-screen ${isDarkTheme ? 'text-white' : 'bg-white text-black'}`} style={isDarkTheme ? { backgroundColor: '#181a1b' } : {}}>
-          <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> {/* ← Header should be HERE, OUTSIDE Routes */}
           
           <main style={{ minHeight: "80vh", padding: "0" }}> 
             <Routes>
@@ -54,9 +56,12 @@ function App() {
               <Route path="/signup" element={<LoginSignup setIsLoggedIn={setIsLoggedIn} />} /> 
               <Route path="/dashboard" element={<UserDashboard />} /> 
               <Route path="/add-product" element={<NewProduct />} />
+              <Route path="/mainpage" element={<MainPage />} />
+              <Route path="/product/:id" element={<ProductPage />} />
               {/* Add other routes here */}
             </Routes>
           </main>
+          
           <Footer />
         </div>
       </Router>

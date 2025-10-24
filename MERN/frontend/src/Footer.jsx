@@ -28,8 +28,8 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link to="/" className={`${isDarkTheme ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-800'} transition`}>Home</Link></li>
-              <li><Link to="/browse" className={`${isDarkTheme ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-800'} transition`}>Browse Items</Link></li>
-              <li><Link to="/list-item" className={`${isDarkTheme ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-800'} transition`}>List Item</Link></li>
+              <li><Link to="/mainpage" className={`${isDarkTheme ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-800'} transition`}>Browse Items</Link></li>
+              <li><Link to="/add-product" className={`${isDarkTheme ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-800'} transition`}>List Item</Link></li>
               <li><Link to="/about" className={`${isDarkTheme ? 'text-gray-400 hover:text-gray-200' : 'text-gray-600 hover:text-gray-800'} transition`}>About</Link></li>
             </ul>
           </div>
